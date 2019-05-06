@@ -8,8 +8,6 @@ use App\Core\App;
 class LoginController
 {
 
-    public $funcionarios;
-
     public function login()
     {
         User::login();
@@ -37,9 +35,11 @@ class LoginController
 
     public function signUpScreen()
     {
-        $this->funcionarios = User::funcionarios();
+        var_dump(User::funcionarios());
+        die();
+        $funcionarios = User::funcionarios();
 
-        return view('signUpScreen', $this->funcionarios);
+        return view('signUpScreen', compact('funcionarios'));
     }
 
 }

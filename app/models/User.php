@@ -87,9 +87,7 @@ class User
 
     public static function funcionarios()
     {
-        $resultado = App::get('database')->selectWhereNot('usuarios',["funcao" => "cliente"]);
-
-        return $resultado;
+        return App::get('database')->selectWhereNot('usuarios',["funcao" => "cliente"]);
     }
 
     public static function view()
