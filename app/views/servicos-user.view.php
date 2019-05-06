@@ -8,13 +8,7 @@
 
         <div class="content">
 
-            <h1 style="text-align:center;">SOU 
-            <?php
-
-            echo $_SESSION['user'];
-
-            ?>
-            !</h1>
+            <h1 style="text-align:center;">SOU <?=$_SESSION['usuario']; ?>!</h1>
             
         </div>
 

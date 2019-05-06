@@ -1,3 +1,8 @@
+/* GLOBAL */
+
+
+/* END GLOBAL */
+
 /* HELPERS */
 
 .pT2{
@@ -68,12 +73,12 @@
 }
 
 .loginScreen{
-    background-image:url("../img/login-background.jpg");
+    background-color:#f1f3f5;
     min-height: 100vh;
 }
 
 .loginCanvas{
-    background-color: #f1f3f5;
+    background-color: #ffffff;
     -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);

@@ -20,7 +20,7 @@
 
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <input type="text" name="usuario" class="lala col-md-12" placeholder="Usuário" required>
+                        <input type="text" name="usuario" class="form-control col-md-12" placeholder="Usuário" required>
                     </div>
                     <div class="col-md-4"></div>
 
@@ -30,7 +30,7 @@
 
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <input type="text" name="senha" class="lala col-md-12 mT2" placeholder="Senha" required>
+                        <input type="password" name="senha" class="form-control col-md-12 mT2" placeholder="Senha" required>
                     </div>
                     <div class="col-md-4"></div>
 
@@ -40,7 +40,7 @@
 
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <button class="loginButton col-md-12 mT2" type="submit">Entrar</button>
+                        <button class="form-control col-md-12 mT2" type="submit">Entrar</button>
                     </div>
                     <div class="col-md-4"></div>
 

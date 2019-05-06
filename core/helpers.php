@@ -8,7 +8,7 @@
  */
 function view($name, $data = [])
 {
-    extract($data);
+    die(var_dump(extract($data)));
 
     return require "app/views/{$name}.view.php";
 }

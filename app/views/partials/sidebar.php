@@ -9,7 +9,7 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Serviços</a>
                         <ul class="sub-menu children dropdown-menu">                            
-                            <li><i class="fa fa-clock-o"></i><a href="solicitacoes">Pendentes</a></li>
+                            <li><i class="fa fa-clock-o"></i><a href="servicos">Pendentes</a></li>
                             <li><i class="fa fa-check"></i><a href="ui-badges.html">Aprovados</a></li>
                             <li><i class="fa fa-times"></i><a href="ui-badges.html">Reprovados</a></li>
                             <li><i class="fa fa-times-circle"></i><a href="ui-badges.html">Cancelados</a></li>
@@ -23,8 +23,11 @@
                         </ul>
                     </li>
                     <li class="menu-title">Gerenciar</li>
-                    <li>
-                        <a href="#"> <i class="menu-icon fa fa-users"></i>Usuários </a>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-users"></i>Usuários </a>
+                        <ul class="sub-menu children dropdown-menu"> 
+                            <li><a href="signUp"> <i class="menu-icon fa fa-user-plus"></i>Cadastrar </a></li>
+                        </ul>
                     </li>
                     <li>
                         <a href="#"> <i class="menu-icon fa fa-bell"></i>Notificações </a>

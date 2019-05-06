@@ -57,7 +57,7 @@ class QueryBuilder
 
             $statement->execute($parameters);
         } catch (\Exception $e) {
-            //
+            echo 'erro ao cadastrar';
         }
     }
 
@@ -71,6 +71,33 @@ class QueryBuilder
             if(!empty($valor))
             {
             $query .= "AND `{$dado}` = '{$valor}' ";
+            }
+        }
+            
+        try 
+        {
+            $resultado = $this->pdo->prepare(utf8_decode($query));
+            $resultado->execute();
+            return $resultado->fetchAll(PDO::FETCH_CLASS);
+
+        } 
+        catch (PDOException $exception)
+        {
+            die($exception->getMessage());
+        }
+
+    }
+
+    public function selectWhereNot($table, $dados)
+    {
+
+        $query = "select * from `{$table}` where 1 ";
+
+        foreach($dados as $dado => $valor)
+        {
+            if(!empty($valor))
+            {
+            $query .= "AND `{$dado}` != '{$valor}' ";
             }
         }
             
