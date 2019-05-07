@@ -22,4 +22,4 @@
 
     <div class="clearfix"></div>
 
-<?php include 'partials/footer.php'; ?>
+<?php include 'partials/footerPainel.php'; ?>

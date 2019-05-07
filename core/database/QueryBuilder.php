@@ -53,11 +53,13 @@ class QueryBuilder
         );
 
         try {
+            die(var_dump($sql));
             $statement = $this->pdo->prepare($sql);
 
             $statement->execute($parameters);
         } catch (\Exception $e) {
             echo 'erro ao cadastrar';
+            die();
         }
     }
 

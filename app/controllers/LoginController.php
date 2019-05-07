@@ -35,8 +35,6 @@ class LoginController
 
     public function signUpScreen()
     {
-        var_dump(User::funcionarios());
-        die();
         $funcionarios = User::funcionarios();
 
         return view('signUpScreen', compact('funcionarios'));
