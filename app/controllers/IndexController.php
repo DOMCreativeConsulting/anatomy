@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Model\User;
+use App\Model\Servicos;
 
 class IndexController
 {
@@ -12,8 +13,9 @@ class IndexController
         User::check();
 
         $view = User::view();
+        $servicos = Servicos::buscarPorCliente();
 
-        return view("index-$view");
+        return view("index-$view", compact('servicos'));
         
     }
 

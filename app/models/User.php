@@ -22,6 +22,7 @@ class User
                 $nome = $dado->nome;
                 $email = $dado->email;
                 $funcao = $dado->funcao;
+                $id = $dado->id;
             }
 
             if(!empty($resultado))
@@ -30,6 +31,7 @@ class User
                 $_SESSION['usuario'] = $nome;
                 $_SESSION['email'] = $email;
                 $_SESSION['funcao'] = $funcao;
+                $_SESSION['id'] = $id;
                 redirect('./');
             }
             else
@@ -40,6 +42,11 @@ class User
             return $resultado;
 
         }
+    }
+
+    public static function buscar()
+    {
+        return App::get('database')->selectAll('usuarios');
     }
 
     public static function logout()

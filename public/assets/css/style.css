@@ -9,6 +9,22 @@
     padding-top:2%;
 }
 
+.pT3{
+    padding-top:3%;
+}
+
+.pT4{
+    padding-top:4%;
+}
+
+.pT5{
+    padding-top:5%;
+}
+
+.pT6{
+    padding-top:6%;
+}
+
 .pT7{
     padding-top:7%;
 }
@@ -104,4 +120,40 @@
 
 .signUpForm{
     padding:3% !important;
+}
+
+.usuarios td, .usuarios th{
+    padding:8px;
+}
+
+.usuarios {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+.usuarios tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+.usuarios tr:hover {
+    background-color: #ddd;
+}
+
+.usuarios th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #03A9F3;
+    color: white;
+}
+
+.title{
+    text-align: center;
+    font-size:30px;
+}
+
+.title2{
+    text-align:center;
+    font-size:25px;
 }

@@ -12,10 +12,23 @@ class ServicosController
     {
         User::check();
 
-        $servicos = Servicos::buscar();
+        $view = User::view();
+        $servicos = Servicos::buscarPorCliente();
 
-        User::view();
+        return view("servicos-$view", compact('servicos'));
 
+    }
+
+    public function solicitar()
+    {
+        return view("solicita-servicos");
+    }
+
+    public function cadastrar()
+    {
+        Servicos::cadastrar();
+
+        return view('solicita-servicos');
     }
 
 }
