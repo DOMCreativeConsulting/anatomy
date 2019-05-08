@@ -5,7 +5,7 @@
                     <li class="active">
                         <a href="./"><i class="menu-icon fa fa-dashboard"></i>Painel </a>
                     </li>
-                    <li class="menu-title">Solicitações</li><!-- /.menu-title -->
+                    <li class="menu-title">Solicitações</li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Serviços</a>
                         <ul class="sub-menu children dropdown-menu">                            
@@ -26,7 +26,9 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-users"></i>Usuários </a>
                         <ul class="sub-menu children dropdown-menu"> 
-                            <li><a href="signUp"> <i class="menu-icon fa fa-user-plus"></i>Cadastrar </a></li>
+                            <li><i class="menu-icon fa fa-user-plus"></i><a href="cadastrar-cliente">Cadastrar Cliente</a></li>
+                            <li><i class="menu-icon fa fa-user-plus"></i><a href="cadastrar-usuario">Cadastrar Usuário</a></li>
+                            <li><i class="menu-icon fa fa-pencil"></i><a href="editar-usuario">Editar</a></li>
                         </ul>
                     </li>
                     <li>
@@ -34,6 +36,6 @@
                     </li>
                     
                 </ul>
-            </div><!-- /.navbar-collapse -->
+            </div>
         </nav>
     </aside>

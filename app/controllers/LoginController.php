@@ -33,11 +33,16 @@ class LoginController
         return view('invalid-loginScreen');
     }
 
-    public function signUpScreen()
+    public function cadastrarCliente()
     {
         $funcionarios = User::funcionarios();
 
-        return view('signUpScreen', compact('funcionarios'));
+        return view('cadastra-cliente', compact('funcionarios'));
+    }
+
+    public function cadastrarUsuario()
+    {
+        return view('cadastra-usuario');
     }
 
 }
