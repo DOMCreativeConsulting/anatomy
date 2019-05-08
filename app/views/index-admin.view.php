@@ -53,7 +53,7 @@
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-3">
-                                        <i class="pe-7s-browser"></i>
+                                        <i class="pe-7s-print"></i>
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
@@ -178,55 +178,25 @@
                                                     </td>
                                                     <td> #5465 </td>
                                                     <td>  <span class="name">Johnny Stephens</span> </td>
-                                                    <td> <span class="product">Site</span> </td>
-                                                    <td><span class="product">Web</span></td>
+                                                    <td> <span class="product">Monitor</span> </td>
+                                                    <td><span class="count">250</span></td>
                                                     <td>
-                                                        <span class="badge badge-complete">Aprovado</span>
+                                                        <span class="badge badge-complete">APROVADO</span>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td class="serial">6.</td>
-                                                    <td class="avatar">
+                                                <tr class=" pb-0">
+                                                    <td class="serial">5.</td>
+                                                    <td class="avatar pb-0">
                                                         <div class="round-img">
-                                                            <a href="#"><img class="rounded-circle" src="public/theme/images/avatar/4.jpg" alt=""></a>
+                                                            <a href="#"><img class="rounded-circle" src="public/theme/images/avatar/6.jpg" alt=""></a>
                                                         </div>
                                                     </td>
-                                                    <td> #5466 </td>
-                                                    <td>  <span class="name">Mary Silva</span> </td>
-                                                    <td> <span class="product">Social Media</span> </td>
-                                                    <td><span class="product">Web</span></td>
+                                                    <td> #5465 </td>
+                                                    <td>  <span class="name">Johnny Stephens</span> </td>
+                                                    <td> <span class="product">Monitor</span> </td>
+                                                    <td><span class="count">250</span></td>
                                                     <td>
-                                                        <span class="badge badge-pending">Reprovado</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="serial">7.</td>
-                                                    <td class="avatar">
-                                                        <div class="round-img">
-                                                            <a href="#"><img class="rounded-circle" src="public/theme/images/avatar/4.jpg" alt=""></a>
-                                                        </div>
-                                                    </td>
-                                                    <td> #5466 </td>
-                                                    <td>  <span class="name">Mary Silva</span> </td>
-                                                    <td> <span class="product">Folder</span> </td>
-                                                    <td><span class="product">Impresso</span></td>
-                                                    <td>
-                                                        <span class="badge badge-pending">Reprovado</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="serial">8.</td>
-                                                    <td class="avatar">
-                                                        <div class="round-img">
-                                                            <a href="#"><img class="rounded-circle" src="public/theme/images/avatar/4.jpg" alt=""></a>
-                                                        </div>
-                                                    </td>
-                                                    <td> #5466 </td>
-                                                    <td>  <span class="name">Mary Silva</span> </td>
-                                                    <td> <span class="product">Artigo</span> </td>
-                                                    <td><span class="product">Redação</span></td>
-                                                    <td>
-                                                        <span class="badge badge-warning">Aguardando Aprovação</span>
+                                                        <span class="badge badge-warning">AGUARDANDO APROVAÇÃO</span>
                                                     </td>
                                                 </tr>
                                             </tbody>

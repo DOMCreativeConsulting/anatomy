@@ -58,19 +58,46 @@ class User
 
     public static function cadastrar()
     {
-        App::get('database')->insert('usuarios', [
-            'nome' => $_POST['nome'],
-            'email' => $_POST['email'],
-            'sexo' => $_POST['sexo'],
-            'nascimento' => $_POST['nascimento'],
-            'cpf' => $_POST['cpf'],
-            'telefone' => $_POST['telefone'],
-            'funcao' => $_POST['funcao'],
-            'usuario' => $_POST['usuario'],
-            'senha' => $_POST['senha']
-        ]);
+        if(isset($_POST['funcionario']))
+        {
+            App::get('database')->insert('usuarios', [
+                'nome' => $_POST['nome'],
+                'email' => $_POST['email'],
+                'sexo' => $_POST['sexo'],
+                'endereco' => $_POST['endereco'],
+                'nascimento' => $_POST['nascimento'],
+                'cpf' => $_POST['cpf'],
+                'telefone' => $_POST['telefone'],
+                'usuario' => $_POST['usuario'],
+                'senha' => $_POST['senha'],
+                'cep' => $_POST['cep'],
+                'funcionario' => $_POST['funcionario']
+            ]);
+        }
 
-        return redirect('signUp');
+        if(isset($_POST['funcao']))
+        {
+            App::get('database')->insert('usuarios', [
+                'nome' => $_POST['nome'],
+                'email' => $_POST['email'],
+                'sexo' => $_POST['sexo'],
+                'usuario' => $_POST['usuario'],
+                'senha' => $_POST['senha'],
+                'funcao' => $_POST['funcao']
+            ]);
+        }
+        
+
+        if(isset($_POST['funcionario']))
+        {
+            return redirect('cadastrar-cliente');
+        }
+
+        if(isset($_POST['funcao']))
+        {
+            return redirect('cadastrar-usuario');
+        }
+
     }
 
     public static function IsAdmin()

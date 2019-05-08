@@ -8,5 +8,6 @@ $router->post("$base/login", 'LoginController@login');
 $router->get("$base/logout", 'LoginController@logout');
 $router->get("$base/loginScreen", 'LoginController@loginScreen');
 $router->get("$base/incorreto", 'LoginController@incorreto');
-$router->post("$base/cadastrar", 'LoginController@cadastrar');
-$router->get("$base/signUp", 'LoginController@signUpScreen');
+$router->post("$base/cadastrar", 'LoginController@cadastrar');;
+$router->get("$base/cadastrar-cliente", 'LoginController@cadastrarCliente');
+$router->get("$base/cadastrar-usuario", 'LoginController@cadastrarUsuario');

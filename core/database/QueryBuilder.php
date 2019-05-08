@@ -58,6 +58,7 @@ class QueryBuilder
             $statement->execute($parameters);
         } catch (\Exception $e) {
             echo 'erro ao cadastrar';
+            die();
         }
     }
 
