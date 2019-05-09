@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 09-Maio-2019 às 05:30
+-- Generation Time: 09-Maio-2019 às 21:13
 -- Versão do servidor: 5.7.24
--- versão do PHP: 7.3.1
+-- versão do PHP: 7.2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -35,22 +35,14 @@ CREATE TABLE IF NOT EXISTS `produtos` (
   `descricao` text NOT NULL,
   `pedidoId` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `produtos`
 --
 
 INSERT INTO `produtos` (`id`, `nome`, `descricao`, `pedidoId`) VALUES
-(4, 'Produto Finalizado', 'Aqui estÃ¡ seu produto! Do jeitinho que vocÃª pediu!!!', 7),
-(3, 'Produto Finalizado', 'Aqui estÃ¡ seu produto! Do jeitinho que vocÃª pediu!!!', 7),
-(5, 'Produto Finalizado', 'Aqui estÃ¡ seu produto! Do jeitinho que vocÃª pediu!!!', 7),
-(6, 'Produto Finalizado', 'Aqui estÃ¡ seu produto! Do jeitinho que vocÃª pediu!!!', 7),
-(7, 'Produto Finalizado', 'Aqui estÃ¡ seu produto! Do jeitinho que vocÃª pediu!!!', 7),
-(8, 'Produto Finalizado', 'Aqui estÃ¡ seu produto! Do jeitinho que vocÃª pediu!!!', 7),
-(9, 'Produto Finalizado', 'Aqui estÃ¡ seu produto! Do jeitinho que vocÃª pediu!!!', 7),
-(10, 'Produto Finalizado', 'Aqui estÃ¡ seu produto! Do jeitinho que vocÃª pediu!!!', 7),
-(11, 'Produto Finalizado', 'Aqui estÃ¡ seu produto! Do jeitinho que vocÃª pediu!!!', 7);
+(36, 'Agora estÃ¡ entregue', 'aqui assim assado!\r\n', 10);
 
 -- --------------------------------------------------------
 
@@ -66,18 +58,22 @@ CREATE TABLE IF NOT EXISTS `servicos` (
   `descricao` text NOT NULL,
   `produto` varchar(255) NOT NULL,
   `clienteId` int(11) NOT NULL,
+  `autor` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL DEFAULT 'pendente',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `servicos`
 --
 
-INSERT INTO `servicos` (`id`, `categoria`, `titulo`, `descricao`, `produto`, `clienteId`, `status`) VALUES
-(5, 'Digital', 'eu quero um serviÃ§o', 'quero que meu serviÃ§o seja assim, assado!!!', 'Folder Paginado atÃ© 10 pgs - Materiais Impressos', 6, 'pendente'),
-(6, 'Digital', 'eu gostaria de um serviÃ§o', 'lalalal teste aqui', 'Cover de facebook - Materiais Digitais', 7, 'pendente'),
-(7, 'Selecione', 'mais um? serÃ¡ que rola?', 'teste de UTF-8 !@#$%Â¨&*() Ã©Ã©Ã©Ã£Ã£Ã£Ã´Ã´Ã´Ã´', 'Envelope carta - Materiais Impressos', 7, 'pendente');
+INSERT INTO `servicos` (`id`, `categoria`, `titulo`, `descricao`, `produto`, `clienteId`, `autor`, `status`) VALUES
+(5, 'Digital', 'eu quero um serviÃ§o', 'quero que meu serviÃ§o seja assim, assado!!!', 'Folder Paginado atÃ© 10 pgs - Materiais Impressos', 6, '', 'aguardando aprovacao'),
+(6, 'Digital', 'eu gostaria de um serviÃ§o', 'lalalal teste aqui', 'Cover de facebook - Materiais Digitais', 7, '', 'reprovado'),
+(7, 'Selecione', 'mais um? serÃ¡ que rola?', 'teste de UTF-8 !@#$%Â¨&*() Ã©Ã©Ã©Ã£Ã£Ã£Ã´Ã´Ã´Ã´', 'Envelope carta - Materiais Impressos', 7, '', 'aprovado'),
+(8, 'RedaÃ§Ã£o', 'Teste da minha solicitaÃ§Ã£o!', 'Eu gostaria de receber um produto bem legal!', 'Redes Sociais - RedaÃ§Ã£o', 6, 'Cliente Teste', 'aguardando aprovacao'),
+(9, 'Digital', 'vou cancelar este', 'asdasd', 'Cover de facebook - Materiais Digitais', 6, 'Cliente Teste', 'aguardando aprovacao'),
+(10, 'RedaÃ§Ã£o', 'Gostaria de mais um serviÃ§o!', 'asdasdsad', 'CartÃ£o de visitas - Materiais Impressos', 7, 'cliente2', 'aguardando aprovacao');
 
 -- --------------------------------------------------------
 
