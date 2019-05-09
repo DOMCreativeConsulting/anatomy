@@ -12,6 +12,26 @@ class Servicos
         return App::get('database')->selectAll('servicos');
     }
 
+    public static function pendentes()
+    {
+        return App::get('database')->selectWhere('servicos', ["status" => "pendente"]);
+    }
+
+    public static function aguardandoAprovacao()
+    {
+        return App::get('database')->selectWhere('servicos', ["status" => "aguardando aprovacao"]);
+    }
+
+    public static function aprovados()
+    {
+        return App::get('database')->selectWhere('servicos', ["status" => "aprovado"]);
+    }
+
+    public static function reprovados()
+    {
+        return App::get('database')->selectWhere('servicos', ["status" => "reprovado"]);
+    }
+
     public static function buscarPorCliente()
     {
         return App::get('database')->selectWhere('servicos', ["clienteId" => $_SESSION['id']]);
@@ -24,7 +44,8 @@ class Servicos
             'titulo' => $_POST['titulo'],
             'descricao' => $_POST['descricao'],
             'produto' => $_POST['produto'],
-            'clienteId' => $_SESSION['id']
+            'clienteId' => $_SESSION['id'],
+            'autor' => $_SESSION['usuario']
         ]);
     }
 

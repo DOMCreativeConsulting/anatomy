@@ -62,24 +62,26 @@ class QueryBuilder
         }
     }
 
-    public function update($table,$parameters,$where)
+    public function update($tabela, $dados, $where)
     {
+        $dados = (array)$dados;
+        $campos = '';
+        foreach ($dados as $key => $valor) {
+            $campos .= "\n $key=:$key,";
+        }
+        $campos = rtrim($campos, ",");
         $sql = sprintf(
-            'UPDATE %s SET %s = %s WHERE %s = %s',
-            $table,
-            implode(', ', array_keys($parameters)),
-            ':' . implode(', :', array_keys($parameters)),
-            implode(', ', array_keys($where)),
-            ':' . implode(', :', array_keys($where))
+            "UPDATE %s \n SET %s \n WHERE id = %s",
+            $tabela,
+            $campos,
+            implode(" = ", $where)
         );
-
         try {
-            die(var_dump($sql));
-            $statement = $this->pdo->prepare($sql);
-            $statement->execute($parameters);
-        } catch (\Exception $e) {
-            echo 'erro ao atualizar';
-            die();
+            $statement = $this->pdo->prepare($sql)->execute($dados);
+            return $where[1];
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+
         }
     }
 
