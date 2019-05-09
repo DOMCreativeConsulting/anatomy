@@ -13,6 +13,7 @@
                             <li><i class="fa fa-check"></i><a href="ui-badges.html">Aprovados</a></li>
                             <li><i class="fa fa-times"></i><a href="ui-badges.html">Reprovados</a></li>
                             <li><i class="fa fa-times-circle"></i><a href="ui-badges.html">Cancelados</a></li>
+                            <li><i class="fa fa-envelope"></i><a href="cadastrar-entrega">Entregar</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">

@@ -62,6 +62,27 @@ class QueryBuilder
         }
     }
 
+    public function update($table,$parameters,$where)
+    {
+        $sql = sprintf(
+            'UPDATE %s SET %s = %s WHERE %s = %s',
+            $table,
+            implode(', ', array_keys($parameters)),
+            ':' . implode(', :', array_keys($parameters)),
+            implode(', ', array_keys($where)),
+            ':' . implode(', :', array_keys($where))
+        );
+
+        try {
+            die(var_dump($sql));
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute($parameters);
+        } catch (\Exception $e) {
+            echo 'erro ao atualizar';
+            die();
+        }
+    }
+
     public function selectWhere($table, $dados)
     {
 

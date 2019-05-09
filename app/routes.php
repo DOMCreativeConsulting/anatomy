@@ -15,3 +15,5 @@ $router->get("$base/editar-usuario", 'UserController@index');
 $router->get("$base/solicitar-servicos", 'ServicosController@solicitar');
 $router->post("$base/solicitar", 'ServicosController@cadastrar');
 $router->get("$base/meus-servicos", 'ServicosController@index');
+$router->post("$base/entregar", 'ServicosController@entregar');
+$router->get("$base/cadastrar-entrega", 'ServicosController@cadastrarEntrega');

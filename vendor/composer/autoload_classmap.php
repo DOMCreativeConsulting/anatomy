@@ -16,6 +16,7 @@ return array(
     'App\\Core\\Request' => $baseDir . '/core/Request.php',
     'App\\Core\\Router' => $baseDir . '/core/Router.php',
     'App\\Model\\Model' => $baseDir . '/app/models/Model.php',
+    'App\\Model\\Produtos' => $baseDir . '/app/models/Produtos.php',
     'App\\Model\\Servicos' => $baseDir . '/app/models/Servicos.php',
     'App\\Model\\User' => $baseDir . '/app/models/User.php',
     'ComposerAutoloaderInit78feb17d581ef8494ce628f5263c112a' => $vendorDir . '/composer/autoload_real.php',
