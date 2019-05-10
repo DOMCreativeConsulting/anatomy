@@ -72,6 +72,11 @@ class ServicosController
         return view("cancelados-$view", compact('servicos'));
     }
 
+    public function cancelar()
+    {
+        Servicos::cancelar();
+    }
+
     public function entregar()
     {
         User::check();

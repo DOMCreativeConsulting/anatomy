@@ -37,6 +37,17 @@ class Servicos
         return App::get('database')->selectWhere('servicos', ["clienteId" => $_SESSION['id']]);
     }
 
+    public static function cancelar()
+    {
+        App::get('database')->update('servicos',[
+            'status' => 'cancelado'
+        ],[
+            'id' => $_POST['servico']
+        ]);
+
+        redirect('servicos');
+    }
+
     public static function cadastrar()
     {
         App::get('database')->insert('servicos',[
