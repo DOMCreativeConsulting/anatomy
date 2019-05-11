@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 09-Maio-2019 às 21:13
--- Versão do servidor: 5.7.24
--- versão do PHP: 7.2.14
+-- Generation Time: 11-Maio-2019 às 23:21
+-- Versão do servidor: 5.7.23
+-- versão do PHP: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,6 +25,21 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `notificacoes`
+--
+
+DROP TABLE IF EXISTS `notificacoes`;
+CREATE TABLE IF NOT EXISTS `notificacoes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mensagem` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `destinado` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `produtos`
 --
 
@@ -35,14 +50,7 @@ CREATE TABLE IF NOT EXISTS `produtos` (
   `descricao` text NOT NULL,
   `pedidoId` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `produtos`
---
-
-INSERT INTO `produtos` (`id`, `nome`, `descricao`, `pedidoId`) VALUES
-(36, 'Agora estÃ¡ entregue', 'aqui assim assado!\r\n', 10);
+) ENGINE=MyISAM AUTO_INCREMENT=88 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -59,21 +67,11 @@ CREATE TABLE IF NOT EXISTS `servicos` (
   `produto` varchar(255) NOT NULL,
   `clienteId` int(11) NOT NULL,
   `autor` varchar(255) NOT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'pendente',
+  `status` varchar(255) DEFAULT 'pendente',
+  `consideracoes` text,
+  `prazo` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `servicos`
---
-
-INSERT INTO `servicos` (`id`, `categoria`, `titulo`, `descricao`, `produto`, `clienteId`, `autor`, `status`) VALUES
-(5, 'Digital', 'eu quero um serviÃ§o', 'quero que meu serviÃ§o seja assim, assado!!!', 'Folder Paginado atÃ© 10 pgs - Materiais Impressos', 6, '', 'aguardando aprovacao'),
-(6, 'Digital', 'eu gostaria de um serviÃ§o', 'lalalal teste aqui', 'Cover de facebook - Materiais Digitais', 7, '', 'reprovado'),
-(7, 'Selecione', 'mais um? serÃ¡ que rola?', 'teste de UTF-8 !@#$%Â¨&*() Ã©Ã©Ã©Ã£Ã£Ã£Ã´Ã´Ã´Ã´', 'Envelope carta - Materiais Impressos', 7, '', 'aprovado'),
-(8, 'RedaÃ§Ã£o', 'Teste da minha solicitaÃ§Ã£o!', 'Eu gostaria de receber um produto bem legal!', 'Redes Sociais - RedaÃ§Ã£o', 6, 'Cliente Teste', 'aguardando aprovacao'),
-(9, 'Digital', 'vou cancelar este', 'asdasd', 'Cover de facebook - Materiais Digitais', 6, 'Cliente Teste', 'aguardando aprovacao'),
-(10, 'RedaÃ§Ã£o', 'Gostaria de mais um serviÃ§o!', 'asdasdsad', 'CartÃ£o de visitas - Materiais Impressos', 7, 'cliente2', 'aguardando aprovacao');
+) ENGINE=MyISAM AUTO_INCREMENT=75 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
