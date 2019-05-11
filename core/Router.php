@@ -64,7 +64,8 @@ class Router
             );
         }
 
-        throw new Exception(redirect('404'));
+        //throw new Exception(die("PÁGINA NÃO ENCONTRADA!"));
+        return view('404');
     }
 
     /**

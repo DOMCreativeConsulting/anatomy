@@ -15,8 +15,9 @@ class ServicosController
 
         $view = User::view();
         $servicos = Servicos::buscar();
+        $produtos = Produtos::buscar();
 
-        return view("servicos-$view", compact('servicos'));
+        return view("servicos-$view", compact('servicos','produtos'));
 
     }
 
@@ -77,6 +78,16 @@ class ServicosController
         Servicos::cancelar();
     }
 
+    public function aprovar()
+    {
+        Servicos::aprovar();
+    }
+
+    public function reprovar()
+    {
+        Servicos::reprovar();
+    }
+
     public function entregar()
     {
         User::check();
@@ -91,6 +102,13 @@ class ServicosController
         $servicos = Servicos::buscar();
 
         return view("entregar-servico", compact("servicos"));
+    }
+
+    public function entregarNovo()
+    {
+        User::check();
+
+        Produtos::entregarNovo();
     }
 
     public function solicitar()

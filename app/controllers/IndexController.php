@@ -14,9 +14,16 @@ class IndexController
 
         $view = User::view();
         $servicos = Servicos::buscarPorCliente();
+        $todosServicos = Servicos::buscar();
+        $clientes = User::buscar();
 
-        return view("index-$view", compact('servicos'));
+        return view("index-$view", compact('servicos','todosServicos','clientes'));
         
+    }
+
+    public function embreve()
+    {
+        return view("embreve");
     }
 
 }

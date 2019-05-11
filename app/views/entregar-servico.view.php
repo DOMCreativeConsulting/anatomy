@@ -7,8 +7,8 @@
             <div class="col-md-8 offset-md-2">
                 <div class="card solicitarServicos">
                     <div class="card-body">
-                        <form method="POST" action="entregar">
-                            <h1 class="title">Entregar um Serviço</h1>
+                        <form method="POST" action="entregar" enctype="multipart/form-data">
+                            <h1 class="title">ENTREGAR UM SERVIÇO</h1>
                             <div class="row pT4">
                                 <div class="col-md-6">
                                     <label for="nome">Título: </label>
@@ -29,7 +29,17 @@
                                     <textarea class="form-control" name="descricao" placeholder="Corpo da mensagem..." required></textarea>
                                 </div>
                                 <div class="col-md-4 offset-md-4 pT3">
-                                    <button type="submit" class="form-control">Enviar</button>
+                                    <label for="file-upload" class="custom-file-upload">
+                                        Enviar Arquivos
+                                    </label>
+                                    <input type="file" id="file-upload" name="arquivos[]" multiple required>
+                                </div>
+                                <div class="col-md-12" style="text-align:center">
+                                    <p style="list-style:none;" id="file-name">
+                                    </p>
+                                </div>
+                                <div class="col-md-4 offset-md-4 pT3">
+                                    <button type="submit" class="form-control">Entregar</button>
                                 </div>
                             </div>
                         </form>

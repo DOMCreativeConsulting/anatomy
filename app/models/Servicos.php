@@ -48,8 +48,39 @@ class Servicos
         redirect('servicos');
     }
 
+    public static function aprovar()
+    {
+        App::get('database')->update('servicos',[
+            'status' => 'aprovado'
+        ],[
+            'id' => $_POST['servico']
+        ]);
+
+        redirect('servicos');
+    }
+
+    public static function reprovar()
+    {
+        App::get('database')->update('servicos',[
+            'status' => 'reprovado',
+            'consideracoes' => $_POST['consideracoes'],
+        ],[
+            'id' => $_POST['servico']
+        ]);
+
+        redirect('servicos');
+    }
+
     public static function cadastrar()
     {
+        $nome = $_SESSION['usuario'];
+
+        mkdir("private/enviosCliente/$nome"." - ".$_POST['titulo'], 0777, true);
+
+        if($_FILES['arquivos']['size'] != 0){
+            uploadFiles("private/enviosCliente/$nome"." - ".$_POST['titulo']."/", "arquivos");
+        }
+
         App::get('database')->insert('servicos',[
             'categoria' => $_POST['categoria'],
             'titulo' => $_POST['titulo'],

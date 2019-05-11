@@ -21,8 +21,8 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tags"></i>Tickets</a>
                         <ul class="sub-menu children dropdown-menu">                            
-                            <li><i class="fa fa-clock-o"></i><a href="ui-buttons.html">Em Aberto</a></li>
-                            <li><i class="fa fa-check"></i><a href="ui-badges.html">Resolvidos</a></li>
+                            <li><i class="fa fa-clock-o"></i><a href="embreve">Em Aberto</a></li>
+                            <li><i class="fa fa-check"></i><a href="embreve">Resolvidos</a></li>
                         </ul>
                     </li>
                     <li class="menu-title">Gerenciar</li>

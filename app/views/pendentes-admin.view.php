@@ -47,6 +47,13 @@
                             <div class="row pT2">
                                 <p class="col-md-12"><b>Descrição: </b><?=$servico->descricao;?></p>
                             </div>
+                            <div class="row pT2">
+                                <div class="col-xl-4 col-lg-6 col-sm-6 col-xs-6">
+                                    <form action="entregar-novo" method="POST">
+                                        <button type="submit" name="servicoId" value="<?=$servico->id;?>" class="form-control">Entregar</button>
+                                    </form>
+                                </div>
+                            </div>
                             <div class="row pT2" style="float:right">
                                 <h6 class="col-md-12"><b>Status: </b><?=$servico->status;?></h6>
                             </div>

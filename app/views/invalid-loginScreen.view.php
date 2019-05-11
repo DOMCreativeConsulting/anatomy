@@ -10,13 +10,11 @@
 
             <form class="loginForm" method="POST" action="login">
 
-                <div class="col-md-12">
-                    <h2 class="loginTitle">
-                        LOGIN
-                    </h2>
+                <div class="col-md-12" style="text-align:center">
+                    <img width="200px" src="public/assets/img/anatomy.png">
                 </div>
 
-                <div class="row pT10">
+                <div class="row pT5">
 
                     <div class="col-md-4"></div>
                     <div class="col-md-4">

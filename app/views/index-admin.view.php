@@ -4,7 +4,32 @@
 
     <div id="right-panel" class="right-panel">
 
-        <?php include 'partials/header.php'; ?>
+        <?php include 'partials/header.php'; 
+
+        $impressos = 0;
+        $digitais = 0;
+        $redacoes = 0;
+        $cliente = 0;
+        foreach($todosServicos as $servico){
+            switch ($servico->categoria){
+                case 'Impresso':
+                    $impressos++;
+                break;
+
+                case 'Digital':
+                    $digitais++;
+                break;
+
+                case 'Vídeo':
+                    $digitais++;
+                break;
+
+                case 'Redação':
+                    $redacoes++;
+                break;
+            }
+        }
+        ?>
 
         <!-- Content -->
         <div class="content">
@@ -21,7 +46,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">23569</span></div>
+                                            <div class="stat-text"><span class="count"><?=$redacoes;?></span></div>
                                             <div class="stat-heading">Redações</div>
                                         </div>
                                     </div>
@@ -39,7 +64,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">3435</span></div>
+                                            <div class="stat-text"><span class="count"><?=$digitais;?></span></div>
                                             <div class="stat-heading">Serviços Web</div>
                                         </div>
                                     </div>
@@ -57,7 +82,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">349</span></div>
+                                            <div class="stat-text"><span class="count"><?=$impressos;?></span></div>
                                             <div class="stat-heading">Serviços Impressos</div>
                                         </div>
                                     </div>
@@ -75,7 +100,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">2986</span></div>
+                                            <div class="stat-text"><span class="count">2</span></div>
                                             <div class="stat-heading">Clientes</div>
                                         </div>
                                     </div>
@@ -99,9 +124,8 @@
                                         <table class="table ">
                                             <thead>
                                                 <tr>
-                                                    <th class="serial">#</th>
+                                                    <th class="serial">#id</th>
                                                     <th class="avatar">Foto</th>
-                                                    <th>ID</th>
                                                     <th>Nome</th>
                                                     <th>Produto</th>
                                                     <th>Categoria</th>
@@ -109,96 +133,28 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+
+                                            <?php 
+                                            foreach($todosServicos as $servico):
+                                            ?>
                                                 <tr>
-                                                    <td class="serial">1.</td>
+                                                    <td class="serial"><?=$servico->id;?></td>
                                                     <td class="avatar">
                                                         <div class="round-img">
-                                                            <a href="#"><img class="rounded-circle" src="public/theme/images/avatar/1.jpg" alt=""></a>
+                                                            <a href="#"><img class="rounded-circle" src="public/theme/images/avatar/teste.jpg" alt=""></a>
                                                         </div>
                                                     </td>
-                                                    <td> #5469 </td>
-                                                    <td>  <span class="name">Louis Stanley</span> </td>
-                                                    <td> <span class="product">Folder</span> </td>
-                                                    <td><span class="product">Impresso</span></td>
+                                                    <td>  <span class="name"><?=$servico->autor;?></span> </td>
+                                                    <td> <span class="product"><?=$servico->produto;?></span> </td>
+                                                    <td><span class="product"><?=$servico->categoria;?></span></td>
                                                     <td>
-                                                        <span class="badge badge-complete">Aprovado</span>
+                                                        <span class="badge badge-warning"><?=$servico->status;?></span>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td class="serial">2.</td>
-                                                    <td class="avatar">
-                                                        <div class="round-img">
-                                                            <a href="#"><img class="rounded-circle" src="public/theme/images/avatar/2.jpg" alt=""></a>
-                                                        </div>
-                                                    </td>
-                                                    <td> #5468 </td>
-                                                    <td>  <span class="name">Gregory Dixon</span> </td>
-                                                    <td> <span class="product">Site</span> </td>
-                                                    <td><span class="product">Web</span></td>
-                                                    <td>
-                                                        <span class="badge badge-complete">Aprovado</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="serial">3.</td>
-                                                    <td class="avatar">
-                                                        <div class="round-img">
-                                                            <a href="#"><img class="rounded-circle" src="public/theme/images/avatar/3.jpg" alt=""></a>
-                                                        </div>
-                                                    </td>
-                                                    <td> #5467 </td>
-                                                    <td>  <span class="name">Catherine Dixon</span> </td>
-                                                    <td> <span class="product">Social Media</span> </td>
-                                                    <td><span class="product">Web</span></td>
-                                                    <td>
-                                                        <span class="badge badge-complete">Aprovado</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="serial">4.</td>
-                                                    <td class="avatar">
-                                                        <div class="round-img">
-                                                            <a href="#"><img class="rounded-circle" src="public/theme/images/avatar/4.jpg" alt=""></a>
-                                                        </div>
-                                                    </td>
-                                                    <td> #5466 </td>
-                                                    <td>  <span class="name">Mary Silva</span> </td>
-                                                    <td> <span class="product">Social Media</span> </td>
-                                                    <td><span class="product">Web</span></td>
-                                                    <td>
-                                                        <span class="badge badge-pending">Reprovado</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class=" pb-0">
-                                                    <td class="serial">5.</td>
-                                                    <td class="avatar pb-0">
-                                                        <div class="round-img">
-                                                            <a href="#"><img class="rounded-circle" src="public/theme/images/avatar/6.jpg" alt=""></a>
-                                                        </div>
-                                                    </td>
-                                                    <td> #5465 </td>
-                                                    <td>  <span class="name">Johnny Stephens</span> </td>
-                                                    <td> <span class="product">Monitor</span> </td>
-                                                    <td><span class="count">250</span></td>
-                                                    <td>
-                                                        <span class="badge badge-complete">APROVADO</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class=" pb-0">
-                                                    <td class="serial">5.</td>
-                                                    <td class="avatar pb-0">
-                                                        <div class="round-img">
-                                                            <a href="#"><img class="rounded-circle" src="public/theme/images/avatar/6.jpg" alt=""></a>
-                                                        </div>
-                                                    </td>
-                                                    <td> #5465 </td>
-                                                    <td>  <span class="name">Johnny Stephens</span> </td>
-                                                    <td> <span class="product">Monitor</span> </td>
-                                                    <td><span class="count">250</span></td>
-                                                    <td>
-                                                        <span class="badge badge-warning">AGUARDANDO APROVAÇÃO</span>
-                                                    </td>
-                                                </tr>
+                                            <?php 
+                                            endforeach; 
+                                            ?>
+
                                             </tbody>
                                         </table>
                                     </div> <!-- /.table-stats -->

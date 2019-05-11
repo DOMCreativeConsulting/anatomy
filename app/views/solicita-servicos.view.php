@@ -8,7 +8,7 @@
                 <div class="card solicitarServicos">
                     <div class="card-body">
 
-                        <form class="formServico" action="solicitar" method="POST">
+                        <form class="formServico" action="solicitar" method="POST" enctype="multipart/form-data">
                             <h1 class="title2">SOLICITAR SERVIÇO</h1>
                             <div class="row pT3">
                                 <div class="col-md-6">
@@ -63,13 +63,19 @@
                                         <option id="video">Vídeo</option>
                                     </datalist>
                                 </div>
+                                <div class="col-md-6">
+                                    <label for="file-upload" class="custom-file-upload" style="margin-top:32px;">
+                                        Enviar Arquivos
+                                    </label>
+                                    <input type="file" id="file-upload" name="arquivos[]" multiple>
+                                </div>
                             </div>
                             <div class="row pT2">
                                 <div class="col-md-12">
                                     <textarea type="text" class="form-control" placeholder="Descreva o que você deseja..." name="descricao" required></textarea>
                                 </div>
                             </div>
-                            <div class="row pT2">
+                            <div class="row pT7 pB7">
                                 <button type="submit" class="form-control col-md-4 offset-md-4">SOLICITAR</button> 
                             </div>
                         </form>

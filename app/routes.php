@@ -3,6 +3,7 @@
 $base = 'anatomy';
 
 $router->get("$base", 'IndexController@index');
+$router->get("$base/embreve", 'IndexController@embreve');
 
 $router->post("$base/servicos", 'ServicosController@index');
 $router->post("$base/pendentes", 'ServicosController@pendentes');
@@ -35,5 +36,8 @@ $router->get("$base/meus-servicos", 'ServicosController@index');
 $router->post("$base/entregar", 'ServicosController@entregar');
 $router->get("$base/cadastrar-entrega", 'ServicosController@cadastrarEntrega');
 $router->post("$base/cadastrar-entrega", 'ServicosController@cadastrarEntrega');
+$router->post("$base/entregar-novo", 'ServicosController@entregarNovo');
 
 $router->post("$base/cancelar", 'ServicosController@cancelar');
+$router->post("$base/aprovar", 'ServicosController@aprovar');
+$router->post("$base/reprovar", 'ServicosController@reprovar');

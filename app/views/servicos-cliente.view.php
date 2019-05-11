@@ -65,14 +65,55 @@
                                 <p class="col-md-12"><b>Descrição: </b><?=$servico->descricao;?></p>
                             </div>
                             <div class="row pT2">
-                            <?php if($servico->status != 'aprovado' && $servico->status != 'cancelado'): ?>
+                            <?php 
+                            if(
+                            $servico->status != 'aprovado' && 
+                            $servico->status != 'reprovado' && 
+                            $servico->status != 'cancelado' && 
+                            $servico->status != 'aguardando aprovacao'
+                            ): 
+                            ?>
                                 <div class="col-xl-4 col-lg-6 col-sm-6 col-xs-6">
                                     <form action="cancelar" method="POST">
                                         <button style="background-color:rgba(255,0,0,0.5);" type="submit" name="servico" value="<?=$servico->id;?>" class="form-control">Cancelar</button>
                                     </form>
                                 </div>
+                            <?php 
+                            endif;
+                            if($servico->status == 'aguardando aprovacao'): ?>
+                            <button type="button" id="botaoToggle" style="background-color:rgba(0,0,0,0.1);height:40px;" class="btn col-md-6">Ver Resposta</button>
+                            <div class="pT2 col-md-12" id="toggle">
+                                <div class="col-md-12">
+                                    <?php foreach ($produtos as $produto){
+                                        if($produto->pedidoId == $servico->id){
+                                            $texto = $produto->descricao;
+                                            $titulo = $produto->nome;
+                                        }
+                                    }
+
+                                    @zip("private/$titulo", "private/$titulo.zip");
+
+                                    ?>
+                                    <p><?=$texto;?></p>
+                                    <b><a href="private/<?=$titulo?>.zip" download>Baixar Arquivos.</a></b>
+                                </div><div class="row">
+                                <div class="col-xl-6 col-lg-6 col-sm-6 col-xs-6 pT4">
+                                    <button style="background-color:rgba(255,0,0,0.5);" type="button" id="toggleReprovar" class="form-control">Reprovar</button>
+                                    <div id="reprovar">
+                                    <form action="reprovar" method="POST">
+                                        <textarea placeholder="Descreva o motivo..." name="consideracoes" class="form-control" id="consideracoes"></textarea>
+                                        <button style="background-color:rgba(255,0,0,1);color:white" type="submit" name="servico" value="<?=$servico->id;?>" class="form-control">Reprovar</button>
+                                    </form>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-sm-6 col-xs-6 pT4">
+                                    <form action="aprovar" method="POST">
+                                        <button style="background-color:rgba(0,255,0,0.5);" type="submit" name="servico" value="<?=$servico->id;?>" class="form-control">Aprovar</button>
+                                    </form>
+                                </div></div>
+                            </div>
                             <?php endif; ?>
-                                <div class="col-md-12" style="text-align:right;">
+                                <div class="col-md-12 pT2" style="text-align:right;">
                                     <h6 class="col-md-12"><b>Status: </b><?=$servico->status;?></h6>
                                 </div>
                             </div>

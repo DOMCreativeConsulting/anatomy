@@ -16,8 +16,8 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tags"></i>Tickets</a>
                         <ul class="sub-menu children dropdown-menu">                            
-                            <li><i class="fa fa-clock-o"></i><a href="ui-buttons.html">Abrir Ticket</a></li>
-                            <li><i class="fa fa-check"></i><a href="ui-badges.html">Meus Tickets</a></li>
+                            <li><i class="fa fa-clock-o"></i><a href="embreve">Abrir Ticket</a></li>
+                            <li><i class="fa fa-check"></i><a href="embreve">Meus Tickets</a></li>
                         </ul>
                     </li>
                     <li class="menu-title">Gerenciar</li>
