@@ -84,7 +84,7 @@
 }
 
 .loginScreen{
-    background-color:#f1f3f5;
+    background-color:#F3BF6B;
     min-height: 100vh;
 }
 
@@ -172,4 +172,16 @@
 
 .loginScreen{
     min-height: 100vh !important;
+}
+
+@media only screen and (min-width:900px){
+    .loginScreen{
+        padding:0px !important;
+    }
+}
+
+@media only screen and (max-width:1000px){
+    .loginIMG{
+        display: none;
+    }
 }

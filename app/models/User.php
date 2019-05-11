@@ -119,6 +119,11 @@ class User
         }
     }
 
+    public static function clientes()
+    {
+        return App::get('database')->selectWhere('usuarios',["funcao" => "cliente"]);
+    }
+
     public static function funcionarios()
     {
         return App::get('database')->selectWhereNot('usuarios',["funcao" => "cliente"]);

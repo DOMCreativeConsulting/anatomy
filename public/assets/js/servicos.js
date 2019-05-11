@@ -1,24 +1,28 @@
+var servicoId = $('.servicoId').val();
+
 $(document).ready(function(){
 
-    $('#toggle').toggle();
-    $('#reprovar').hide();
-    $('#enviar-novo').hide();
+    $('.fechar').toggle();
 
-    $('#toggleReprovar').click(function(){
+    $('.reprovar').toggle();
 
-        $('#reprovar').toggle(300);
+    $('.enviar-novo').toggle();
 
-    });
+    $('.toggleReprovar').click(function(){
 
-    $('#toggleEnviarNovo').click(function(){
-
-        $('#enviar-novo').toggle(300);
+        $('.reprovar').toggle(300);
 
     });
 
-    $('#botaoToggle').click(function(){
+    $('.toggleEnviarNovo').click(function(){
 
-        $('#toggle').toggle(300);
+        $('.enviar-novo').toggle(300);
+
+    });
+
+    $('.botaoToggle').click(function(){
+
+        $('.fechar').toggle(300);
 
     });
 

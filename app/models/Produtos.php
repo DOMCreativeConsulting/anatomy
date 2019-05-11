@@ -33,6 +33,12 @@ class Produtos
             'id' => $_POST['servico']
         ]);
 
+        App::get('database')->insert('notificacoes',[
+            'mensagem' => $_SESSION['usuario']." acaba de responder a sua solicitação. <br>Você tem 2 dias para aprovar ou reprovar o produto.",
+            'status' => 'nao lida',
+            'destinado' => 'cliente'
+        ]);
+
         redirect('cadastrar-entrega');
     }
 

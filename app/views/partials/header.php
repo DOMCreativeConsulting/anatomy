@@ -1,8 +1,23 @@
 <header id="header" class="header">
+    <?php
+    use App\Model\Notificacoes;
+
+    $notificacoes = Notificacoes::buscar();
+
+        $nNotificacoes = 0;
+
+        foreach($notificacoes as $notificacao):
+            if($notificacao->destinado == 'admin' && $notificacao->status == 'nao lida'):
+
+            $nNotificacoes++;
+
+            endif;
+        endforeach; ?>
+
             <div class="top-left">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="./"><img src="public/assets/img/anatomy.png" height="40px" width="100px" alt="Logo"></a>
-                    <a class="navbar-brand hidden" href="./"><img src="public/theme/images/logo2.png" alt="Logo"></a>
+                    <!--<a class="navbar-brand hidden" href="./"><img src="public/theme/images/logo2.png" alt="Logo"></a>-->
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
                 </div>
             </div>
@@ -13,62 +28,36 @@
                         <div class="dropdown for-notification">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-bell"></i>
-                                <span class="count bg-danger">3</span>
+                                <span class="count bg-danger"><?=$nNotificacoes;?></span>
                             </button>
+
                             <div class="dropdown-menu" aria-labelledby="notification">
-                                <p class="red">Você tem 3 notificações.</p>
+                                <p class="red">Você tem <?=$nNotificacoes;?> notificações.</p>
+
+                            <?php foreach($notificacoes as $notificacao):
+                                if($notificacao->destinado == 'admin'): ?>
                                 <a class="dropdown-item media" href="#">
                                     <i class="fa fa-check"></i>
-                                    <p>Teste número 1.</p>
+                                    <p><?=$notificacao->mensagem;?></p>
                                 </a>
-                                <a class="dropdown-item media" href="#">
-                                    <i class="fa fa-info"></i>
-                                    <p>Teste número 2.</p>
-                                </a>
-                                <a class="dropdown-item media" href="#">
-                                    <i class="fa fa-warning"></i>
-                                    <p>Teste número 3.</p>
-                                </a>
+                            <?php endif;
+                                endforeach; ?>
+
                             </div>
                         </div>
 
                         <div class="dropdown for-message">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="message" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-envelope"></i>
-                                <span class="count bg-primary">4</span>
+                                <span class="count bg-primary">1</span>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="message">
-                                <p class="red">You have 4 Mails</p>
+                                <p class="red">Tickets serão implementados em breve.</p>
                                 <a class="dropdown-item media" href="#">
-                                    <span class="photo media-left"><img alt="avatar" src="public/theme/images/avatar/1.jpg"></span>
+                                    <span class="photo media-left"><img alt="avatar" src="public/assets/img/user-icon.jpg"></span>
                                     <div class="message media-body">
-                                        <span class="name float-left">Jonathan Smith</span>
-                                        <span class="time float-right">Just now</span>
-                                        <p>Hello, this is an example msg</p>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item media" href="#">
-                                    <span class="photo media-left"><img alt="avatar" src="public/theme/images/avatar/2.jpg"></span>
-                                    <div class="message media-body">
-                                        <span class="name float-left">Jack Sanders</span>
-                                        <span class="time float-right">5 minutes ago</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item media" href="#">
-                                    <span class="photo media-left"><img alt="avatar" src="public/theme/images/avatar/3.jpg"></span>
-                                    <div class="message media-body">
-                                        <span class="name float-left">Cheryl Wheeler</span>
-                                        <span class="time float-right">10 minutes ago</span>
-                                        <p>Hello, this is an example msg</p>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item media" href="#">
-                                    <span class="photo media-left"><img alt="avatar" src="public/theme/images/avatar/4.jpg"></span>
-                                    <div class="message media-body">
-                                        <span class="name float-left">Rachel Santos</span>
-                                        <span class="time float-right">15 minutes ago</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
+                                        <span class="name float-left">Cliente</span>
+                                        <p>Preview da mensagem.</p>
                                     </div>
                                 </a>
                             </div>
@@ -77,19 +66,17 @@
 
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="public/theme/images/admin.jpg" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="public/assets/img/user-icon.jpg" alt="User Avatar">
                         </a>
 
                         <div class="user-menu dropdown-menu">
                             <a class="nav-link" href="#"><i class="fa fa- user"></i><?=$_SESSION['logado'] == 1 ? "Bem vindo " . $_SESSION['usuario'] : "Deslogado" ?></a>
                         
-                            <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
+                            <a class="nav-link" href="#"><i class="fa fa- user"></i>Minha Conta</a>
 
-                            <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
+                            <a class="nav-link" href="#"><i class="fa fa -cog"></i>Opções</a>
 
-                            <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
-
-                            <a class="nav-link" href="logout"><i class="fa fa-power -off"></i>Logout</a>
+                            <a class="nav-link" href="logout"><i class="fa fa-power -off"></i>Sair</a>
                         </div>
                     </div>
 

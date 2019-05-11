@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Model\User;
+use App\Model\Notificacoes;
 
 class UserController
 {
@@ -9,7 +10,9 @@ class UserController
     public function index()
     {
         $usuarios = User::buscar();
-        return view('edita-usuario', compact('usuarios'));
+        $notificacoes = Notificacoes::buscar();
+
+        return view('edita-usuario', compact('usuarios','notificacoes'));
     }
 
 }

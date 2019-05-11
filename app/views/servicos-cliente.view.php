@@ -1,7 +1,7 @@
 <?php include 'partials/head.php'; ?> 
 <?php include 'partials/sidebarCliente.php'; ?>
 <div id="right-panel" class="right-panel">
-    <?php include 'partials/header.php'; ?>
+    <?php include 'partials/headerCliente.php'; ?>
     <div class="content">
     <h1 class="title">SOLICITAÇÕES</h1>
     <div class="row">
@@ -81,8 +81,9 @@
                             <?php 
                             endif;
                             if($servico->status == 'aguardando aprovacao'): ?>
-                            <button type="button" id="botaoToggle" style="background-color:rgba(0,0,0,0.1);height:40px;" class="btn col-md-6">Ver Resposta</button>
-                            <div class="pT2 col-md-12" id="toggle">
+                            <input type="hidden" value="<?=$servico->id;?>" id="servicoId">
+                            <button type="button" id="botaoToggle" style="background-color:rgba(0,0,0,0.1);height:40px;" class="btn col-md-6 botaoToggle">Ver Resposta</button>
+                            <div class="pT2 col-md-12 fechar" id="toggle<?=$servico->id;?>">
                                 <div class="col-md-12">
                                     <?php foreach ($produtos as $produto){
                                         if($produto->pedidoId == $servico->id){
@@ -98,8 +99,8 @@
                                     <b><a href="private/<?=$titulo?>.zip" download>Baixar Arquivos.</a></b>
                                 </div><div class="row">
                                 <div class="col-xl-6 col-lg-6 col-sm-6 col-xs-6 pT4">
-                                    <button style="background-color:rgba(255,0,0,0.5);" type="button" id="toggleReprovar" class="form-control">Reprovar</button>
-                                    <div id="reprovar">
+                                    <button style="background-color:rgba(255,0,0,0.5);" type="button" class="form-control toggleReprovar">Reprovar</button>
+                                    <div class="reprovar">
                                     <form action="reprovar" method="POST">
                                         <textarea placeholder="Descreva o motivo..." name="consideracoes" class="form-control" id="consideracoes"></textarea>
                                         <button style="background-color:rgba(255,0,0,1);color:white" type="submit" name="servico" value="<?=$servico->id;?>" class="form-control">Reprovar</button>

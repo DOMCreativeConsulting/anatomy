@@ -1,7 +1,7 @@
 <?php include 'partials/head.php'; ?> 
 <?php include 'partials/sidebarCliente.php'; ?>
 <div id="right-panel" class="right-panel">
-    <?php include 'partials/header.php'; ?>
+    <?php include 'partials/headerCliente.php'; ?>
     <div class="content">
         <div class="row">
             <div class="col-md-8 offset-md-2">
@@ -70,6 +70,11 @@
                                     <input type="file" id="file-upload" name="arquivos[]" multiple>
                                 </div>
                             </div>
+                            <?php
+                            date_default_timezone_set('America/Sao_Paulo');
+                            $data = date('Y-m-d H:i:s', strtotime("+2 days")); 
+                            ?>
+                            <input type="hidden" name="prazo" value="<?=$data;?>">
                             <div class="row pT2">
                                 <div class="col-md-12">
                                     <textarea type="text" class="form-control" placeholder="Descreva o que você deseja..." name="descricao" required></textarea>

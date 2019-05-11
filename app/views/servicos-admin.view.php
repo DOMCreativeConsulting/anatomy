@@ -74,9 +74,9 @@
                                 </div>
                                 <div class="row pT2">
                                     <div class="col-xl-4 col-lg-6 col-sm-6 col-xs-6">
-                                        <button type="button" id="toggleEnviarNovo" name="servicoId" value="<?=$servico->id;?>" class="form-control">Enviar novo</button>
+                                        <button type="button" name="servicoId" value="<?=$servico->id;?>" class="form-control toggleEnviarNovo">Enviar novo</button>
                                     </div>
-                                    <div id="enviar-novo" class="col-md-12 pT2">
+                                    <div class="col-md-12 pT2 enviar-novo">
                                         <form action="entregar-novo" method="POST" enctype="multipart/form-data">
                                             <div class="row">
                                                 <input type="hidden" value="<?=$servico->id;?>" name="servico">
@@ -95,6 +95,10 @@
 
                             <div class="row pT2">
                             <?php if($servico->status == 'pendente'): ?>
+                            <div class="col-md-12">
+                                <?php @zip("private/enviosCliente/$servico->autor"." - "."$servico->titulo", "private/enviosCliente/$servico->autor"." - "."$servico->titulo.zip"); ?>
+                                <p class="col-md-12"><b><a href="private/enviosCliente/<?=$servico->autor." - ".$servico->titulo;?>.zip" download>Baixar Arquivos.</a></b></p>
+                            </div>
                                 <div class="col-xl-4 col-lg-6 col-sm-6 col-xs-6">
                                     <form action="cadastrar-entrega" method="POST">
                                         <button style="<?=$rgb;?>" type="submit" name="servicoId" value="<?=$servico->id;?>" class="form-control">Entregar</button>

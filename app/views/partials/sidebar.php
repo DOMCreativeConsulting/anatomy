@@ -10,6 +10,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Serviços</a>
                         <ul class="sub-menu children dropdown-menu">                            
                             <li><i class="fa fa-copy"></i><a href="servicos">Ver Todos</a></li>
+                            <li><i class="fa fa-user"></i><a href="por-cliente">Por Cliente</a></li>
                             <li><i class="fa fa-clock-o"></i><a href="pendentes">Pendentes</a></li>
                             <li><i class="fa fa-check"></i><a href="aprovados">Aprovados</a></li>
                             <li><i class="fa fa-clock-o"></i><a href="aguardando-aprovacao">Aguardando Aprovação</a></li>

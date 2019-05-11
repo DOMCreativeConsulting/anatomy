@@ -43,6 +43,24 @@ class ServicosController
         return view("aprovados-$view", compact('servicos'));
     }
 
+    public function porCliente()
+    {
+        User::check();
+        $clientes = User::clientes();
+
+        return view("seleciona-cliente", compact('clientes'));
+    }
+
+    public function filtraCliente()
+    {
+        User::check();
+        $clientes = User::clientes();
+        $selecionado = $_POST['cliente'];
+        $servicos = Servicos::buscar();
+
+        return view("porCliente-servico", compact('clientes','selecionado','servicos'));
+    }
+
     public function reprovados()
     {
         User::check();

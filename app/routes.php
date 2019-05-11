@@ -18,6 +18,8 @@ $router->get("$base/aprovados", 'ServicosController@aprovados');
 $router->get("$base/reprovados", 'ServicosController@reprovados');
 $router->get("$base/aguardando-aprovacao", 'ServicosController@aguardandoAprovacao');
 $router->get("$base/cancelados", 'ServicosController@cancelados');
+$router->get("$base/por-cliente", 'ServicosController@porCliente');
+$router->post("$base/filtrar-cliente", 'ServicosController@filtraCliente');
 
 $router->post("$base/login", 'LoginController@login');
 $router->get("$base/logout", 'LoginController@logout');

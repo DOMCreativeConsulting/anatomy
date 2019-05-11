@@ -4,7 +4,7 @@
 
     <div id="right-panel" class="right-panel">
 
-        <?php include 'partials/header.php'; ?>
+        <?php include 'partials/headerCliente.php'; ?>
 
         <?php
         $nServicos = 0;

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use App\Model\User;
 use App\Model\Servicos;
+use App\Model\Notificacoes;
 
 class IndexController
 {

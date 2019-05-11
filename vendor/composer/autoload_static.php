@@ -13,6 +13,7 @@ class ComposerStaticInit78feb17d581ef8494ce628f5263c112a
     public static $classMap = array (
         'App\\Controllers\\IndexController' => __DIR__ . '/../..' . '/app/controllers/IndexController.php',
         'App\\Controllers\\LoginController' => __DIR__ . '/../..' . '/app/controllers/LoginController.php',
+        'App\\Controllers\\NotificacoesController' => __DIR__ . '/../..' . '/app/controllers/NotificacoesController.php',
         'App\\Controllers\\ServicosController' => __DIR__ . '/../..' . '/app/controllers/ServicosController.php',
         'App\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/controllers/UserController.php',
         'App\\Core\\App' => __DIR__ . '/../..' . '/core/App.php',
@@ -21,6 +22,7 @@ class ComposerStaticInit78feb17d581ef8494ce628f5263c112a
         'App\\Core\\Request' => __DIR__ . '/../..' . '/core/Request.php',
         'App\\Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
         'App\\Model\\Model' => __DIR__ . '/../..' . '/app/models/Model.php',
+        'App\\Model\\Notificacoes' => __DIR__ . '/../..' . '/app/models/Notificacoes.php',
         'App\\Model\\Produtos' => __DIR__ . '/../..' . '/app/models/Produtos.php',
         'App\\Model\\Servicos' => __DIR__ . '/../..' . '/app/models/Servicos.php',
         'App\\Model\\User' => __DIR__ . '/../..' . '/app/models/User.php',
