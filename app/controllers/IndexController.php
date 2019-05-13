@@ -28,4 +28,9 @@ class IndexController
         return view("embreve");
     }
 
+    public function sucesso()
+    {
+        return view("sucesso");
+    }
+
 }

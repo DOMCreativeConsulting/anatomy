@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 13-Maio-2019 às 05:43
+-- Generation Time: 13-Maio-2019 às 17:34
 -- Versão do servidor: 5.7.23
 -- versão do PHP: 7.2.10
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `notificacoes` (
   `destinado` varchar(255) NOT NULL,
   `tipo` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=119 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `produtos` (
   `descricao` text NOT NULL,
   `pedidoId` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=89 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=119 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `servicos` (
   `consideracoes` text,
   `prazo` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=76 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=136 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -122,8 +122,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `usuario`, `email`, `endereco`, `senha`, `funcao`, `sexo`, `nascimento`, `cpf`, `cep`, `telefone`, `funcionario`) VALUES
-(8, 'DOM', 'admin', 'agenciadomcc@gmail.com', 'Rua dos Bobos, nÂº 0', 'saopio19#', 'admin', 'M', '1998-12-12', '123.456.789-10', '12345-678', '(51)99822-1777', ''),
-(6, 'Cliente Teste', 'cliente', 'cliente@email.com', 'Rua dos Bobos, nÂº 0', 'cliente', 'cliente', 'M', '1998-12-12', '123.456.789-10', '12345-678', '(51)99822-1777', 'DOM');
+(8, 'DOM', 'admin', 'lucasdelimamonteiro@gmail.com', 'Rua dos Bobos, nÂº 0', 'saopio19#', 'admin', 'M', '1998-12-12', '123.456.789-10', '12345-678', '(51)99822-1777', '');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

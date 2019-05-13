@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Model;
-use App\Model\Model;
 use App\Core\App;
+use App\Model\Email;
 
 class Servicos
 {
@@ -56,6 +56,19 @@ class Servicos
             'id' => $_POST['servico']
         ]);
 
+        $emailFuncionario = App::get('database')->selectWhere('usuarios',[
+            'nome' => $_SESSION['funcionario']
+        ]);
+
+        foreach($emailFuncionario as $email){
+            $email = $email->email;
+        }
+
+        Email::enviar('noreply@anatomymkt.com.br',$email,[
+            'assunto' => $_SESSION['usuario']." acaba de Aprovar o serviço.", 
+            'mensagem' => $_SESSION['usuario']." acaba de Aprovar o serviço."
+        ]);
+
         redirect('servicos');
     }
 
@@ -66,6 +79,19 @@ class Servicos
             'consideracoes' => $_POST['consideracoes'],
         ],[
             'id' => $_POST['servico']
+        ]);
+
+        $emailFuncionario = App::get('database')->selectWhere('usuarios',[
+            'nome' => $_SESSION['funcionario']
+        ]);
+
+        foreach($emailFuncionario as $email){
+            $email = $email->email;
+        }
+
+        Email::enviar('noreply@anatomymkt.com.br',$email,[
+            'assunto' => $_SESSION['usuario']." acaba de Reprovar o serviço.", 
+            'mensagem' => $_SESSION['usuario']." acaba de Reprovar o serviço pelo seguinte motivo:<br> ".$_POST['consideracoes']."."
         ]);
 
         redirect('servicos');
@@ -94,9 +120,31 @@ class Servicos
         App::get('database')->insert('notificacoes',[
             'mensagem' => $_SESSION['usuario']." acaba de solicitar um serviço.",
             'status' => 'nao lida',
-            'destinado' => 'admin',
+            'destinado' => $_SESSION['funcionario'],
             'tipo' => 'aviso'
         ]);
+
+        $emailFuncionario = App::get('database')->selectWhere('usuarios',[
+            'nome' => $_SESSION['funcionario']
+        ]);
+
+        foreach($emailFuncionario as $email){
+            $emailFuncionario = $email->email;
+        }
+
+        Email::enviar('noreply@anatomymkt.com.br',$emailFuncionario,[
+            'assunto' => $_SESSION['usuario']." acaba de solicitar um serviço.", 
+            'mensagem' => $_SESSION['usuario']." solicitou um ".$_POST['produto']."<br>Você tem 7 dias para respondê-lo antes que o prazo se expire."
+        ]);
+
+        Email::enviar('noreply@anatomymkt.com.br',$_SESSION['email'],[
+            'assunto' => "Sua solicitação foi realizada com êxito.", 
+            'mensagem' => "Sua solicitação foi realizada com êxito e será respondida dentro do prazo de até 7 dias.
+            <br><img src='http://sistema.anatomymkt.com.br/public/assets/img/anatomy.png' width='200px'>
+            <br><a href='http://sistema.anatomymkt.com.br/'>Clique aqui para ser redirecionado ao Painel do Cliente.</a>
+        "]);
+
+        redirect('sucesso');
     }
 
 }

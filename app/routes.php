@@ -54,3 +54,5 @@ $router->get("$base/tickets-pendentes", 'TicketsController@pendentes');
 $router->get("$base/tickets-resolvidos", 'TicketsController@resolvidos');
 
 $router->post("$base/marcar-lida", 'NotificacoesController@marcarLida');
+
+$router->get("$base/sucesso", 'IndexController@sucesso');

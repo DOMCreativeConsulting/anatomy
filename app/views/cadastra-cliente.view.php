@@ -44,7 +44,7 @@
                                         <input type="date" name="nascimento" class="form-control col-md-12" required>
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="funcionario">Funcionário:</label>
+                                        <label for="funcionario">Responsável pelo atendimento:</label>
                                         <input class="form-control" list="funcionarios" name="funcionario">
                                         <datalist id="funcionarios">
                                             <?php foreach ($funcionarios as $funcionario): ?>

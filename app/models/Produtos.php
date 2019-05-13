@@ -40,7 +40,24 @@ class Produtos
             'tipo' => 'aviso'
         ]);
 
-        redirect('cadastrar-entrega');
+        $autor = App::get('database')->selectWhere('servicos',[
+            'id' => $_POST['servico']
+        ]);
+
+        $emailCliente = App::get('database')->selectWhere('usuarios',[
+            'nome' => $autor[0]->autor
+        ]);
+
+        foreach($emailCliente as $email){
+            $email = $email->email;
+        }
+
+        Email::enviar('noreply@anatomymkt.com.br',$email,[
+            'assunto' => $_SESSION['usuario']." acaba de entregar a sua solicitação.", 
+            'mensagem' => $_SESSION['usuario']." acaba de entregar o serviço ".$_POST['nome'].". <br>Você tem 2 dias para aprovar ou reprovar o produto antes que o prazo se expire."
+        ]);
+
+        redirect('sucesso');
     }
 
     public static function entregarNovo()
