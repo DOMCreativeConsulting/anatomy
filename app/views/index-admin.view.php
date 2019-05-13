@@ -9,7 +9,12 @@
         $impressos = 0;
         $digitais = 0;
         $redacoes = 0;
-        $cliente = 0;
+        $nClientes = 0;
+        foreach($clientes as $cliente){
+            if($cliente->funcao == 'cliente'){
+                $nClientes++;
+            }
+        }
         foreach($todosServicos as $servico){
             switch ($servico->categoria){
                 case 'Impresso':
@@ -100,7 +105,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">2</span></div>
+                                            <div class="stat-text"><span class="count"><?=$nClientes;?></span></div>
                                             <div class="stat-heading">Clientes</div>
                                         </div>
                                     </div>
@@ -136,21 +141,44 @@
 
                                             <?php 
                                             foreach($todosServicos as $servico):
+                                                switch ($servico->status){
+                                                    case 'aprovado':
+                                                        $cor = 'complete';
+                                                    break;
+                                    
+                                                    case 'reprovado':
+                                                        $cor = 'danger';
+                                                    break;
+                                    
+                                                    case 'cancelado':
+                                                        $cor = 'danger';
+                                                    break;
+
+                                                    case 'pendente':
+                                                        $cor = 'warning';
+                                                    break;
+                                    
+                                                    case 'aguardando aprovacao':
+                                                        $cor = 'warning';
+                                                    break;
+                                                }
                                             ?>
-                                                <tr>
+                                                
+                                                <tr class="servicoListado">
                                                     <td class="serial"><?=$servico->id;?></td>
                                                     <td class="avatar">
                                                         <div class="round-img">
-                                                            <a href="#"><img class="rounded-circle" src="public/theme/images/avatar/teste.jpg" alt=""></a>
+                                                            <img class="rounded-circle" src="public/assets/img/user-icon.jpg" alt="">
                                                         </div>
                                                     </td>
-                                                    <td>  <span class="name"><?=$servico->autor;?></span> </td>
-                                                    <td> <span class="product"><?=$servico->produto;?></span> </td>
+                                                    <td><span class="name"><?=$servico->autor;?></span> </td>
+                                                    <td><span class="product"><?=$servico->produto;?></span> </td>
                                                     <td><span class="product"><?=$servico->categoria;?></span></td>
                                                     <td>
-                                                        <span class="badge badge-warning"><?=$servico->status;?></span>
+                                                        <a href="servicos"><span class="badge badge-<?=$cor;?>"><?=$servico->status;?></span></a>
                                                     </td>
                                                 </tr>
+                                                
                                             <?php 
                                             endforeach; 
                                             ?>

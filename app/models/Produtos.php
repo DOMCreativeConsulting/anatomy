@@ -36,7 +36,8 @@ class Produtos
         App::get('database')->insert('notificacoes',[
             'mensagem' => $_SESSION['usuario']." acaba de responder a sua solicitação. <br>Você tem 2 dias para aprovar ou reprovar o produto.",
             'status' => 'nao lida',
-            'destinado' => 'cliente'
+            'destinado' => $nome,
+            'tipo' => 'aviso'
         ]);
 
         redirect('cadastrar-entrega');
@@ -63,6 +64,13 @@ class Produtos
             'status' => 'aguardando aprovacao'
         ],[
             'id' => $_POST['servico']
+        ]);
+
+        App::get('database')->insert('notificacoes',[
+            'mensagem' => $_SESSION['usuario']." enviou um novo produto. <br>Você tem 2 dias para aprovar ou reprovar o produto.",
+            'status' => 'nao lida',
+            'destinado' => $nome,
+            'tipo' => 'aviso'
         ]);
 
         redirect('servicos');

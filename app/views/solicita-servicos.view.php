@@ -64,8 +64,9 @@
                                     </datalist>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="file-upload" class="custom-file-upload" style="margin-top:32px;">
-                                        Enviar Arquivos
+                                    <label for="anexar" style="font-size:12px;text-align:center;">Gostaria de enviar um modelo como base de layout?</label>
+                                    <label name="anexar" for="file-upload" class="custom-file-upload">
+                                        Anexar arquivo modelo.
                                     </label>
                                     <input type="file" id="file-upload" name="arquivos[]" multiple>
                                 </div>
@@ -79,6 +80,10 @@
                                 <div class="col-md-12">
                                     <textarea type="text" class="form-control" placeholder="Descreva o que você deseja..." name="descricao" required></textarea>
                                 </div>
+                            </div>
+                            <div class="col-md-12" style="text-align:center">
+                                <p style="list-style:none;" id="file-name">
+                                </p>
                             </div>
                             <div class="row pT7 pB7">
                                 <button type="submit" class="form-control col-md-4 offset-md-4">SOLICITAR</button> 

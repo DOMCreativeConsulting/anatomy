@@ -19,7 +19,6 @@ $router->get("$base/reprovados", 'ServicosController@reprovados');
 $router->get("$base/aguardando-aprovacao", 'ServicosController@aguardandoAprovacao');
 $router->get("$base/cancelados", 'ServicosController@cancelados');
 $router->get("$base/por-cliente", 'ServicosController@porCliente');
-$router->post("$base/filtrar-cliente", 'ServicosController@filtraCliente');
 
 $router->post("$base/login", 'LoginController@login');
 $router->get("$base/logout", 'LoginController@logout');
@@ -31,6 +30,7 @@ $router->get("$base/cadastrar-cliente", 'LoginController@cadastrarCliente');
 $router->get("$base/cadastrar-usuario", 'LoginController@cadastrarUsuario');
 
 $router->get("$base/editar-usuario", 'UserController@index');
+$router->get("$base/minha-conta", 'UserController@minhaConta');
 
 $router->get("$base/solicitar-servicos", 'ServicosController@solicitar');
 $router->post("$base/solicitar", 'ServicosController@cadastrar');
@@ -39,7 +39,18 @@ $router->post("$base/entregar", 'ServicosController@entregar');
 $router->get("$base/cadastrar-entrega", 'ServicosController@cadastrarEntrega');
 $router->post("$base/cadastrar-entrega", 'ServicosController@cadastrarEntrega');
 $router->post("$base/entregar-novo", 'ServicosController@entregarNovo');
+$router->post("$base/filtrar-cliente", 'ServicosController@filtraCliente');
 
 $router->post("$base/cancelar", 'ServicosController@cancelar');
 $router->post("$base/aprovar", 'ServicosController@aprovar');
 $router->post("$base/reprovar", 'ServicosController@reprovar');
+
+$router->get("$base/ticket", 'TicketsController@index');
+$router->post("$base/abrir-ticket", 'TicketsController@abrir');
+$router->post("$base/resolver-ticket", 'TicketsController@resolverTicket');
+$router->post("$base/resolver", 'TicketsController@resolver');
+$router->get("$base/meus-tickets", 'TicketsController@meusTickets');
+$router->get("$base/tickets-pendentes", 'TicketsController@pendentes');
+$router->get("$base/tickets-resolvidos", 'TicketsController@resolvidos');
+
+$router->post("$base/marcar-lida", 'NotificacoesController@marcarLida');

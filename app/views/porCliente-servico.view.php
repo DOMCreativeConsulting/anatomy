@@ -4,28 +4,11 @@
     <?php include 'partials/header.php'; ?>
     <div class="content">
     <h1 class="title">TODAS AS SOLICITAÇÕES DE <b><?=$selecionado;?></b></h1>
-    <div class="row">
-        <div class="col-md-3 offset-md-9">
-            <form method="POST">
-                <div class="row">
-                    <div class="col-xl-7 col-xs-6">
-                        <select name="ordem" class="form-control">
-                            <option value="antigos">A Mais Tempo</option>
-                            <option value="recentes">Últimas</option>
-                            <option value="todos">Todos</option>
-                        </select>
-                    </div>
-                    <div class="col-xl-5 col-xs-6">
-                        <button type="submit" class="form-control">Filtrar</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+
         <div class="row pT2">
             <?php 
             $nServicos = 1;
-            isset($_POST['ordem']) && $_POST['ordem'] == 'todos' ? $max = 9999 : $max = 6; 
+            isset($_POST['ordem']) && $_POST['ordem'] == 'todos' ? $max = 9999 : $max = 999; 
             isset($_POST['ordem']) && $_POST['ordem'] == 'recentes' ? $ordem = array_reverse($servicos) : $ordem = $servicos;
             foreach($ordem as $servico):
             if($nServicos <= $max):

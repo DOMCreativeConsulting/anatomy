@@ -3,7 +3,7 @@
 namespace App\Controllers;
 use App\Model\User;
 use App\Model\Servicos;
-use App\Model\Notificacoes;
+use App\Model\Ticket;
 
 class IndexController
 {
@@ -17,8 +17,9 @@ class IndexController
         $servicos = Servicos::buscarPorCliente();
         $todosServicos = Servicos::buscar();
         $clientes = User::buscar();
+        $tickets = Ticket::buscar();
 
-        return view("index-$view", compact('servicos','todosServicos','clientes'));
+        return view("index-$view", compact('servicos','todosServicos','clientes','tickets'));
         
     }
 

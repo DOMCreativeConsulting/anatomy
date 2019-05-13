@@ -103,7 +103,7 @@
 }
 
 .loginTitle{
-    font-size:14px;
+    font-size:36px;
     text-align: center;
 }
 
@@ -116,9 +116,11 @@
 }
 
 .usuarios {
+    table-layout: fixed;
+    width: 100%;   
+    overflow: hidden;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 100%;
 }
   
 .usuarios tr:nth-child(even){
@@ -171,6 +173,7 @@
 }
 
 .loginScreen{
+    overflow-x: hidden;
     min-height: 100vh !important;
 }
 
@@ -184,4 +187,41 @@
     .loginIMG{
         display: none;
     }
+}
+
+.ticket td, .ticket th{
+    padding:8px;
+}
+
+.ticket{
+    table-layout: fixed;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+.ticket tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+.ticket tr:hover {
+    background-color: #ddd;
+}
+
+.ticket th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #03A9F3;
+    color: white;
+}
+
+.servicoListado:hover{
+    background-color:#f1f1f1;
+}
+
+.inputMinhaConta{
+    border-top:none;
+    border-left:none;
+    border-right:none;
 }

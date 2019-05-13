@@ -16,13 +16,13 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tags"></i>Tickets</a>
                         <ul class="sub-menu children dropdown-menu">                            
-                            <li><i class="fa fa-clock-o"></i><a href="embreve">Abrir Ticket</a></li>
-                            <li><i class="fa fa-check"></i><a href="embreve">Meus Tickets</a></li>
+                            <li><i class="fa fa-clock-o"></i><a href="ticket">Abrir Ticket</a></li>
+                            <li><i class="fa fa-check"></i><a href="meus-tickets">Meus Tickets</a></li>
                         </ul>
                     </li>
                     <li class="menu-title">Gerenciar</li>
                     <li>
-                        <a href="#"> <i class="menu-icon fa fa-user"></i>Minha Conta </a>
+                        <a href="minha-conta"> <i class="menu-icon fa fa-user"></i>Minha Conta </a>
                     </li>
                     <li>
                         <a href="#"> <i class="menu-icon fa fa-bell"></i>Notificações </a>

@@ -1,16 +1,19 @@
 <?php
 
 namespace App\Controllers;
-use App\Model\User;
-use App\Model\Model;
-use App\Core\App;
+use App\Model\Notificacoes;
 
 class NotificacoesController
 {
 
-    public static function index()
+    public function index()
     {
         Notificacoes::buscar();
+    }
+
+    public function marcarLida()
+    {
+        Notificacoes::marcarLida();
     }
 
 }

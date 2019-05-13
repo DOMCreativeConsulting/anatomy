@@ -94,7 +94,8 @@ class Servicos
         App::get('database')->insert('notificacoes',[
             'mensagem' => $_SESSION['usuario']." acaba de solicitar um serviço.",
             'status' => 'nao lida',
-            'destinado' => 'admin'
+            'destinado' => 'admin',
+            'tipo' => 'aviso'
         ]);
     }
 

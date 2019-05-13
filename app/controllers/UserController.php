@@ -15,4 +15,9 @@ class UserController
         return view('edita-usuario', compact('usuarios','notificacoes'));
     }
 
+    public function minhaConta()
+    {
+        return view('minha-conta');
+    }
+
 }

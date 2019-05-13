@@ -23,6 +23,9 @@ class User
                 $email = $dado->email;
                 $funcao = $dado->funcao;
                 $id = $dado->id;
+                $funcionario = $dado->funcionario;
+                $endereco = $dado->endereco;
+                $nascimento = $dado->nascimento;
             }
 
             if(!empty($resultado))
@@ -32,6 +35,9 @@ class User
                 $_SESSION['email'] = $email;
                 $_SESSION['funcao'] = $funcao;
                 $_SESSION['id'] = $id;
+                $_SESSION['funcionario'] = $funcionario;
+                $_SESSION['endereco'] = $endereco;
+                $_SESSION['nascimento'] = $nascimento;
                 redirect('./');
             }
             else
