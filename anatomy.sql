@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 11-Maio-2019 às 23:21
+-- Generation Time: 13-Maio-2019 às 05:43
 -- Versão do servidor: 5.7.23
 -- versão do PHP: 7.2.10
 
@@ -34,8 +34,9 @@ CREATE TABLE IF NOT EXISTS `notificacoes` (
   `mensagem` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
   `destinado` varchar(255) NOT NULL,
+  `tipo` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -50,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `produtos` (
   `descricao` text NOT NULL,
   `pedidoId` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=88 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=89 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -71,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `servicos` (
   `consideracoes` text,
   `prazo` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=75 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=76 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -82,11 +83,15 @@ CREATE TABLE IF NOT EXISTS `servicos` (
 DROP TABLE IF EXISTS `tickets`;
 CREATE TABLE IF NOT EXISTS `tickets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `categoria` varchar(255) NOT NULL DEFAULT 'outros',
+  `categoria` varchar(255) NOT NULL,
   `titulo` varchar(255) NOT NULL,
   `texto` text NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `autor` varchar(255) NOT NULL,
+  `data` date NOT NULL,
+  `resposta` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -110,15 +115,14 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `telefone` varchar(21) DEFAULT NULL,
   `funcionario` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `usuario`, `email`, `endereco`, `senha`, `funcao`, `sexo`, `nascimento`, `cpf`, `cep`, `telefone`, `funcionario`) VALUES
-(1, 'DOM', 'admin', 'agenciadomcc@gmail.com', '', 'saopio19#', 'admin', 'O', '', '', '', '', ''),
-(7, 'cliente2', 'cliente2', 'cliente@email.com', 'meu endereÃ§o, nÂº 321', 'cliente2', 'cliente', 'F', '1999-12-29', '999999999', '93044-380', '9999999', 'DOM'),
+(8, 'DOM', 'admin', 'agenciadomcc@gmail.com', 'Rua dos Bobos, nÂº 0', 'saopio19#', 'admin', 'M', '1998-12-12', '123.456.789-10', '12345-678', '(51)99822-1777', ''),
 (6, 'Cliente Teste', 'cliente', 'cliente@email.com', 'Rua dos Bobos, nÂº 0', 'cliente', 'cliente', 'M', '1998-12-12', '123.456.789-10', '12345-678', '(51)99822-1777', 'DOM');
 COMMIT;
 
