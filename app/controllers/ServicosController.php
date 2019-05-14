@@ -3,7 +3,6 @@
 namespace App\Controllers;
 use App\Model\User;
 use App\Model\Servicos;
-use App\Model\Model;
 use App\Model\Produtos;
 
 class ServicosController
@@ -17,8 +16,13 @@ class ServicosController
         $servicos = Servicos::buscar();
         $produtos = Produtos::buscar();
 
-        return view("servicos-$view", compact('servicos','produtos'));
-
+        if($view == 'cliente'){
+            return view("servicos-cliente", compact('servicos','produtos'));
+        }
+        else{
+            return view("servicos-admin", compact('servicos','produtos'));
+        }
+        
     }
 
     public function pendentes()
@@ -29,8 +33,12 @@ class ServicosController
         $servicos = Servicos::buscarPorCliente();
         $admin = Servicos::buscar();
 
-        return view("pendentes-$view", compact('servicos','admin'));
-
+        if($view == 'cliente'){
+            return view("pendentes-cliente", compact('servicos','admin'));
+        }
+        else{
+            return view("pendentes-admin", compact('servicos','admin'));
+        }
     }
 
     public function aprovados()
@@ -40,7 +48,12 @@ class ServicosController
         $view = User::view();
         $servicos = Servicos::buscar();
 
-        return view("aprovados-$view", compact('servicos'));
+        if($view == 'cliente'){
+            return view("aprovados-cliente", compact('servicos'));
+        }
+        else{
+            return view("aprovados-admin", compact('servicos'));
+        }
     }
 
     public function porCliente()
@@ -68,7 +81,12 @@ class ServicosController
         $view = User::view();
         $servicos = Servicos::buscar();
 
-        return view("reprovados-$view", compact('servicos'));
+        if($view == 'cliente'){
+            return view("reprovados-cliente", compact('servicos'));
+        }
+        else{
+            return view("reprovados-admin", compact('servicos'));
+        }
     }
 
     public function aguardandoAprovacao()
@@ -78,7 +96,12 @@ class ServicosController
         $view = User::view();
         $servicos = Servicos::buscar();
 
-        return view("aguardando-$view", compact('servicos'));
+        if($view == 'cliente'){
+            return view("aguardando-cliente", compact('servicos'));
+        }
+        else{
+            return view("aguardando-admin", compact('servicos'));
+        }
     }
 
     public function cancelados()
@@ -88,7 +111,12 @@ class ServicosController
         $view = User::view();
         $servicos = Servicos::buscar();
 
-        return view("cancelados-$view", compact('servicos'));
+        if($view == 'cliente'){
+            return view("cancelados-cliente", compact('servicos'));
+        }
+        else{
+            return view("cancelados-admin", compact('servicos'));
+        }
     }
 
     public function cancelar()

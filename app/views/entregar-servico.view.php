@@ -7,7 +7,7 @@
             <div class="col-md-8 offset-md-2">
                 <div class="card solicitarServicos">
                     <div class="card-body">
-                        <form method="POST" action="entregar" enctype="multipart/form-data">
+                        <form method="POST" action="entregar" class="formServico" enctype="multipart/form-data" id="uploadForm">
                             <h1 class="title">ENTREGAR UM SERVIÇO</h1>
                             <div class="row pT4">
                                 <div class="col-md-6">
@@ -38,7 +38,7 @@
                                     <p style="list-style:none;" id="file-name">
                                     </p>
                                 </div>
-                                <div class="col-md-4 offset-md-4 pT3">
+                                <div class="col-md-4 offset-md-4 pT3 pB7">
                                     <button type="submit" class="form-control">Entregar</button>
                                 </div>
                             </div>

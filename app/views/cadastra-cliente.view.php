@@ -41,16 +41,15 @@
                                 <div class="row pT2">
                                     <div class="col-md-4">
                                         <label for="nascimento">Data de Nascimento:</label>
-                                        <input type="date" name="nascimento" class="form-control col-md-12" required>
+                                        <input type="date" lang="pt-Br" name="nascimento" class="form-control col-md-12" required>
                                     </div>
                                     <div class="col-md-4">
                                         <label for="funcionario">Responsável pelo atendimento:</label>
-                                        <input class="form-control" list="funcionarios" name="funcionario">
-                                        <datalist id="funcionarios">
+                                        <select class="form-control" name="funcionario">
                                             <?php foreach ($funcionarios as $funcionario): ?>
                                             <option value="<?=$funcionario->nome;?>"><?=$funcionario->nome;?> (<?=$funcionario->funcao;?>)</option>
                                             <?php endforeach; ?>
-                                        </datalist>
+                                        </select>
                                     </div>
                                     <div class="col-md-4">
                                         <label for="cep">Cep:</label>
@@ -64,7 +63,7 @@
                                         <input type="text" name="telefone" class="form-control col-md-12" placeholder="(00)00000-0000" required>
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="cpf">Cpf:</label>
+                                        <label for="cpf">Cpf / Cnpj:</label>
                                         <input type="text" name="cpf" class="form-control col-md-12" required>
                                     </div>
                                     <div class="col-md-4">

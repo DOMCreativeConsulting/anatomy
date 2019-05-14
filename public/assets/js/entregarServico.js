@@ -2,16 +2,27 @@ var fileName = [];
 
 $(document).ready(function(){
 
-    $('input[type="file"]').change(function(e){
+    function filePreview(input) {
 
-        fileName = [];
+        for(var i = 0; i < input.files.length; i++){
 
-        for (let index = 0; index < e.target.files.length; index++) {
-            fileName.push(e.target.files[index].name + '<br>');
+            if (input.files && input.files[i]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#uploadForm').after('<embed class="miniatura" src="'+e.target.result+'">');
+                }
+                reader.readAsDataURL(input.files[i]);
+            }
+
         }
 
-        $('#file-name').html('Os arquivos:<br><b>' + fileName + '</b>foram selecionados!');
-       
+    }
+
+    $("#file-upload").change(function () {
+        /*for(var i = 0; i < input.files.length; i++){
+            $('#uploadForm + embed').remove();a
+        }*/
+        filePreview(this);
     });
-    
+
 });

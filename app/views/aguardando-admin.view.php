@@ -29,7 +29,7 @@
             isset($_POST['ordem']) && $_POST['ordem'] == 'recentes' ? $ordem = array_reverse($servicos) : $ordem = $servicos;
             foreach($ordem as $servico):
             if($nServicos <= $max):
-                if($servico->status == 'aguardando aprovacao'):
+                if($servico->status == 'aguardando aprovacao' && $servico->destinado == $_SESSION['usuario'] || $servico->status == 'aguardando aprovacao' && $_SESSION['funcao'] == 'admin'):
                     $nServicos++;
             ?>
                 <div class="col-md-6">

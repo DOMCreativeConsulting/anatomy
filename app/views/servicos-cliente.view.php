@@ -65,6 +65,19 @@
                                 <p class="col-md-12"><b>Descrição: </b><?=$servico->descricao;?></p>
                             </div>
                             <div class="row pT2">
+                                <div class="col-md-12">
+                                <?php if($servico->status == 'pendente'): 
+                                    $pasta = $servico->autor." - ".$servico->titulo;
+                                    $dirname = "private/enviosCliente/$pasta/";
+                                    $images = glob($dirname."*.*");
+                                    
+                                    foreach($images as $image) {
+                                        echo '<img class="miniaturaCard" src="'.$image.'" />';
+                                    }
+                                endif; ?>
+                                </div>
+                            </div>
+                            <div class="row pT2">
                             <?php 
                             if(
                             $servico->status != 'aprovado' && 

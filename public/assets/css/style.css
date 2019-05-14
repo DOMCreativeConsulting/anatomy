@@ -225,3 +225,17 @@
     border-left:none;
     border-right:none;
 }
+
+.miniatura{
+    width:150px;
+    height:150px;
+    border:2px solid grey;
+    margin:3px;
+}
+
+.miniaturaCard{
+    width:75px;
+    height:75px;
+    margin:1%;
+    border:1px solid grey;
+}

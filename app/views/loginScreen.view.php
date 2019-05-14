@@ -12,9 +12,10 @@
 
                 <div class="col-md-12" style="text-align:center">
                     <img width="200px" src="public/assets/img/anatomy.png">
+                    <p class="pT3" style="color:#222"><b>Área do Cliente</b></p>
                 </div>
 
-                <div class="row pT5">
+                <div class="row pT2">
 
                     <div class="col-md-2"></div>
                     <div class="col-md-8">

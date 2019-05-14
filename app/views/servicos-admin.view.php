@@ -96,6 +96,18 @@
                             <div class="row pT2">
                             <?php if($servico->status == 'pendente'): ?>
                             <div class="col-md-12">
+                                <?php
+                                $pasta = $servico->autor." - ".$servico->titulo;
+                                $dirname = "private/enviosCliente/$pasta/";
+                                $images = glob($dirname."*.*");
+                                
+                                foreach($images as $image) {
+                                    echo '<img class="miniaturaCard" src="'.$image.'" />';
+                                }
+
+                                ?>
+                            </div>
+                            <div class="col-md-12">
                                 <?php @zip("private/enviosCliente/$servico->autor"." - "."$servico->titulo", "private/enviosCliente/$servico->autor"." - "."$servico->titulo.zip"); ?>
                                 <p class="col-md-12"><b><a href="private/enviosCliente/<?=$servico->autor." - ".$servico->titulo;?>.zip" download>Baixar Arquivos.</a></b></p>
                             </div>

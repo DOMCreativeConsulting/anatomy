@@ -114,7 +114,8 @@ class Servicos
             'produto' => $_POST['produto'],
             'clienteId' => $_SESSION['id'],
             'autor' => $_SESSION['usuario'],
-            'prazo' => $_POST['prazo']
+            'prazo' => $_POST['prazo'],
+            'destinado' => $_SESSION['funcionario']
         ]);
 
         App::get('database')->insert('notificacoes',[

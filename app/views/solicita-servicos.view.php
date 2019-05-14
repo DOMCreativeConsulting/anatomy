@@ -6,9 +6,9 @@
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <div class="card solicitarServicos">
-                    <div class="card-body">
+                    <div class="card-body" style="background-color:#03A9F3;border-radius:0.25rem;box-shadow:0 0 20px rgba(0, 0, 0, 0.08);">
 
-                        <form class="formServico" action="solicitar" method="POST" enctype="multipart/form-data">
+                        <form class="formServico" action="solicitar" method="POST" enctype="multipart/form-data" id="uploadForm">
                             <h1 class="title2">SOLICITAR SERVIÇO</h1>
                             <div class="row pT3">
                                 <div class="col-md-6">
@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="anexar" style="font-size:12px;text-align:center;">Gostaria de enviar um modelo como base de layout?</label>
-                                    <label name="anexar" for="file-upload" class="custom-file-upload">
+                                    <label style="background-color:white" name="anexar" for="file-upload" class="custom-file-upload">
                                         Anexar arquivo modelo.
                                     </label>
                                     <input type="file" id="file-upload" name="arquivos[]" multiple>
