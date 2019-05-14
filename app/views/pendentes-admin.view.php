@@ -50,8 +50,8 @@
                             <div class="row pT2">
                                 <p class="col-md-12"><b>Descrição: </b><?=$servico->descricao;?></p>
                             </div>
+                            <?php if($servico->status == 'pendente'): ?>
                             <div class="row pT2">
-                                <?php if($servico->status == 'pendente'): ?>
                                 <div class="col-md-12">
                                     <?php
                                     $pasta = $servico->autor." - ".$servico->titulo;
@@ -61,9 +61,10 @@
                                     foreach($images as $image) {
                                         echo '<img class="miniaturaCard" src="'.$image.'" />';
                                     }
-
-                                ?>
+                                    ?>
+                                </div>
                             </div>
+                            <?php endif; ?>
                             <div class="row pT2">
                                 <?php @zip("private/$titulo", "private/$titulo.zip"); ?>
                                 <p class="col-md-12"><b><a href="private/enviosCliente/<?=$servico->autor." - ".$servico->titulo;?>.zip" download>Baixar Arquivos.</a></b></p>

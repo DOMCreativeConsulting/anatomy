@@ -17,9 +17,11 @@
                                     <form action="filtrar-cliente" method="POST">
                                         <select name="cliente" class="form-control">
                                             <?php foreach($clientes as $cliente): ?>
-                                            <option value="<?=$cliente->nome;?>"><?=$cliente->nome;?></option>
+                                                <?php if($cliente->funcionario == $_SESSION['usuario'] || $_SESSION['funcao'] == 'admin'): ?>
+                                                    <option value="<?=$cliente->nome;?>"><?=$cliente->nome;?></option>
+                                                <?php endif; ?>
                                             <?php endforeach; ?>
-                                        </select>
+                                        </select>   
                                         <button type="submti" class="form-control pT2">Filtrar</button>                          
                                     </form>
                                 </div>
