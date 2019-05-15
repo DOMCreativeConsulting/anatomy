@@ -36,14 +36,18 @@
                             </button>
 
                             <div class="dropdown-menu" aria-labelledby="notification">
-                                <p class="red">Você tem <?=$nAvisos;?> notificações.</p>
+                                <!--<p class="red"><a href="lerTodas"><i class="fa fa-check"></i> Marcar todas como "lida".</a></p>-->
 
                             <?php foreach($notificacoes as $notificacao):
                                 if($notificacao->destinado == $_SESSION['usuario'] && $notificacao->tipo == 'aviso' && $notificacao->status == 'nao lida'): ?>
-                                <a class="dropdown-item media" href="#">
-                                    <i class="fa fa-check"></i>
-                                    <p><?=$notificacao->mensagem;?></p>
-                                </a>
+                                <form id="formAviso" action="marcar-lida" method="POST">
+                                    <input type="hidden" name="notificacaoId" value="<?=$notificacao->id;?>">
+                                    <input type="hidden" name="tipo" value="aviso">
+                                    <a class="dropdown-item media" href="javascript:{}" onclick="document.getElementById('formAviso').submit();">
+                                        <i class="fa fa-bell"></i>
+                                        <p><?=$notificacao->mensagem;?></p>
+                                    </a>
+                                </form>
                             <?php endif;
                                 endforeach; ?>
 
@@ -60,6 +64,7 @@
                                 <?php foreach($notificacoes as $notificacao):
                                     if($notificacao->destinado == $_SESSION['usuario'] && $notificacao->tipo == 'ticket' && $notificacao->status == 'nao lida'): ?>
                                         <form id="form" action="marcar-lida" method="POST">
+                                            <input type="hidden" name="tipo" value="ticket">
                                             <input type="hidden" name="notificacaoId" value="<?=$notificacao->id;?>">
                                             <a class="dropdown-item media" href="javascript:{}" onclick="document.getElementById('form').submit();">
                                                 <span class="photo media-left"><img alt="avatar" src="public/assets/img/user-icon.jpg"></span>
@@ -69,7 +74,7 @@
                                                 </div>
                                             </a>
                                         </form>
-                            <?php endif;
+                                    <?php endif;
                                 endforeach; ?>
 
                             </div>

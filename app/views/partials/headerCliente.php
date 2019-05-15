@@ -40,10 +40,14 @@
 
                             <?php foreach($notificacoes as $notificacao):
                                 if($notificacao->destinado == $_SESSION['usuario'] && $notificacao->tipo == 'aviso'): ?>
-                                <a class="dropdown-item media" href="#">
-                                    <i class="fa fa-check"></i>
-                                    <p><?=$notificacao->mensagem;?></p>
-                                </a>
+                                <form id="formAviso" action="marcar-lida" method="POST">
+                                    <input type="hidden" name="notificacaoId" value="<?=$notificacao->id;?>">
+                                    <input type="hidden" name="tipo" value="aviso">
+                                    <a class="dropdown-item media" href="javascript:{}" onclick="document.getElementById('formAviso').submit();">
+                                        <i class="fa fa-bell"></i>
+                                        <p><?=$notificacao->mensagem;?></p>
+                                    </a>
+                                </form>
                             <?php endif;
                                 endforeach; ?>
 

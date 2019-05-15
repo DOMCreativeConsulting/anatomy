@@ -28,6 +28,7 @@
             isset($_POST['ordem']) && $_POST['ordem'] == 'todos' ? $max = 9999 : $max = 6; 
             isset($_POST['ordem']) && $_POST['ordem'] == 'recentes' ? $ordem = array_reverse($servicos) : $ordem = $servicos;
             foreach($ordem as $servico):
+                $diasRestantes = diasRestantes($servico->prazo);
                 switch($servico->status)
                 {
                     case 'aprovado':
@@ -48,13 +49,44 @@
                 }
             if($nServicos <= $max):
                     $nServicos++;
-            ?>
+            if($diasRestantes < 0): ?>
+
+                <div class="col-md-6">
+                    <div class="card" style="background-color:rgba(0,0,0,0.4);">
+                        <div class="card-body" style="text-align:justify;">
+                            <div class="row">
+                                <h3 class="col-md-12 title3"><?=$servico->autor;?></h3>
+                                <div class="col-md-12 pT2">
+                                    <h5 class="col-md-12"><b>Título: </b><?=$servico->titulo;?></h5>
+                                </div>
+                                <div class="col-md-12 pT2">
+                                    <h5 class="col-md-12"><b>Categoria: </b><?=$servico->categoria;?></h5>
+                                </div>
+                                <div class="col-md-12 pT2">
+                                    <h5 class="col-md-12"><b>Produto: </b><?=$servico->produto;?></h5>
+                                </div>
+                                <div class="col-md-12 pT2">
+                                    <h5 class="col-md-12"><b>Prazo: </b><b style="color:red">Expirado</b></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            <?php endif; ?>
+            <?php if($diasRestantes >= 0): ?>
+
                 <div class="col-md-6">
                     <div class="card" style="<?=$rgb;?>">
                         <div class="card-body" style="text-align:justify;">
                             <div class="row">
                                 <h3 class="col-md-12 title3"><?=$servico->autor;?></h3>
                             </div>
+                            <?php if($servico->categoria == 'pauta redes sociais'): ?>
+                            <div class="row pT2">
+                                <h5 class="col-md-12"><b>Cliente: </b><?=$servico->destinado;?></h5>
+                            </div>
+                            <?php endif; ?>
                             <div class="row pT2">
                                 <h5 class="col-md-12"><b>Título: </b><?=$servico->titulo;?></h5>
                             </div>
@@ -65,8 +97,12 @@
                                 <h5 class="col-md-12"><b>Produto: </b><?=$servico->produto;?></h5>
                             </div>
                             <div class="row pT2">
+                                <h5 class="col-md-12"><b>Prazo: </b><?=diasRestantes($servico->prazo);?> dias restantes.</h5>
+                            </div>
+                            <div class="row pT2">
                                 <p class="col-md-12"><b>Descrição: </b><?=$servico->descricao;?></p>
                             </div>
+
 
                             <?php if($servico->status == 'reprovado'): ?>
                                 <div class="row pT2">
@@ -125,6 +161,7 @@
                         </div>
                     </div>
                 </div>
+            <?php endif; ?>
             <?php endif; ?>
             <?php endforeach; ?>
         </div>

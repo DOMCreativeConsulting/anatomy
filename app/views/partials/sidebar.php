@@ -19,6 +19,8 @@
                             <li><i class="fa fa-times"></i><a href="reprovados">Reprovados</a></li>
                             <li><i class="fa fa-times-circle"></i><a href="cancelados">Cancelados</a></li>
                             <li><i class="fa fa-envelope"></i><a href="cadastrar-entrega">Entregar</a></li>
+                            <li><i class="fa fa-facebook"></i><a href="cadastrar-pauta">Enviar Pauta</a></li>
+                            <li><i class="fa fa-user"></i><a href="simular-cliente">Simular Cliente</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
@@ -38,7 +40,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#"> <i class="menu-icon fa fa-bell"></i>Notificações </a>
+                        <a href="notificacoes"> <i class="menu-icon fa fa-bell"></i>Notificações </a>
                     </li>
                 <?php endif; ?>
 

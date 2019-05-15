@@ -1,28 +1,27 @@
 <?php include 'partials/head.php'; ?> 
-<?php include 'partials/sidebarCliente.php'; ?>
+<?php include 'partials/sidebar.php'; ?>
 <div id="right-panel" class="right-panel">
-    <?php include 'partials/headerCliente.php'; ?>
+    <?php include 'partials/header.php'; ?>
     <div class="content">
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <div class="card solicitarServicos">
-                    <div class="card-body" style="background-color:#03A9F3;border-radius:0.25rem;box-shadow:0 0 20px rgba(0, 0, 0, 0.08);">
+                    <div class="card-body">
 
-                        <form class="formServico" action="solicitar" method="POST" enctype="multipart/form-data" id="uploadForm">
-                            <h1 class="title2">SOLICITAR SERVIÇO</h1>
+                        <form class="formServico" action="simular" method="POST" enctype="multipart/form-data" id="uploadForm">
+                            <h1 class="title2"><i class="fa fa-user"></i> SIMULAR CLIENTE</h1>
                             <div class="row pT3">
                                 <div class="col-md-6">
                                     <label for="titulo">Título: </label>
                                     <input type="text" class="form-control" name="titulo" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="categoria">Categoria: </label>
-                                    <select name="categoria" id="categoriaSelect" class="form-control" required>
+                                    <label for="cliente">Cliente: </label>
+                                    <select name="cliente" class="form-control" required>
                                         <option>Selecione</option>
-                                        <option value="Impresso">Impresso</option>
-                                        <option value="Digital">Digital</option>
-                                        <option value="Redação">Redação</option>
-                                        <option value="Vídeo">Vídeo</option>
+                                            <?php foreach($clientes as $cliente): ?>
+                                                <option value="<?=$cliente->nome;?>"><?=$cliente->nome;?></option>
+                                            <?php endforeach; ?>
                                     </select>
                                 </div>
                             </div>
@@ -64,6 +63,16 @@
                                     </datalist>
                                 </div>
                                 <div class="col-md-6">
+                                    <label for="categoria">Categoria: </label>
+                                    <select name="categoria" id="categoriaSelect" class="form-control" required>
+                                        <option>Selecione</option>
+                                        <option value="Impresso">Impresso</option>
+                                        <option value="Digital">Digital</option>
+                                        <option value="Redação">Redação</option>
+                                        <option value="Vídeo">Vídeo</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 offset-md-3">
                                     <label for="anexar" style="font-size:12px;text-align:center;">Gostaria de enviar um modelo como base de layout?</label>
                                     <label style="background-color:white" name="anexar" for="file-upload" class="custom-file-upload">
                                         Anexar arquivo modelo.
@@ -73,7 +82,7 @@
                             </div>
                             <?php
                             date_default_timezone_set('America/Sao_Paulo');
-                            $data = date('Y-m-d H:i:s', strtotime("+15 days")); 
+                            $data = date('Y-m-d H:i:s', strtotime("+2 days")); 
                             ?>
                             <input type="hidden" name="prazo" value="<?=$data;?>">
                             <div class="row pT2">
@@ -97,5 +106,5 @@
     </div>
     <div class="clearfix"></div>
     <?php include 'partials/footerPainel.php'; ?>
-    <?php checkSuccess(); dd($_SESSION['sucesso']); ?>
+    <?php checkSuccess(); ?>
 </div>

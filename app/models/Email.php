@@ -18,8 +18,8 @@ class Email
             $mail->SMTPDebug = 0;   
             $mail->IsSMTP();
 
-            // optional
-            // used only when SMTP requires authentication  
+            // // optional
+            // // used only when SMTP requires authentication  
             $mail->SMTPAuth = true;
             $mail->Host       = 'smtp.sendgrid.net';  // Specify main and backup SMTP servers
             $mail->Username   = 'AnatomyMKT';                     // SMTP username
@@ -45,6 +45,7 @@ class Email
 
             $mail->send();
         } catch (Exception $e) {
+            $e->getMessage();
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
             die();
         }

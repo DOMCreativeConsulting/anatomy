@@ -29,9 +29,35 @@
             isset($_POST['ordem']) && $_POST['ordem'] == 'recentes' ? $ordem = array_reverse($admin) : $ordem = $admin;
             foreach($ordem as $servico):
             if($nServicos <= $max):
+                $diasRestantes = diasRestantes($servico->prazo);
                 if($servico->status == 'pendente' && $servico->destinado == $_SESSION['usuario'] || $servico->status == 'pendente' && $_SESSION['funcao'] == 'admin'):
                     $nServicos++;
-            ?>
+                    if($diasRestantes < 0): ?>
+
+                    <div class="col-md-6">
+                        <div class="card" style="background-color:rgba(0,0,0,0.4);">
+                            <div class="card-body" style="text-align:justify;">
+                                <div class="row">
+                                    <h3 class="col-md-12 title3"><?=$servico->autor;?></h3>
+                                    <div class="col-md-12 pT2">
+                                        <h5 class="col-md-12"><b>Título: </b><?=$servico->titulo;?></h5>
+                                    </div>
+                                    <div class="col-md-12 pT2">
+                                        <h5 class="col-md-12"><b>Categoria: </b><?=$servico->categoria;?></h5>
+                                    </div>
+                                    <div class="col-md-12 pT2">
+                                        <h5 class="col-md-12"><b>Produto: </b><?=$servico->produto;?></h5>
+                                    </div>
+                                    <div class="col-md-12 pT2">
+                                        <h5 class="col-md-12"><b>Prazo: </b><b style="color:red">Expirado</b></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                <?php endif; ?>
+                <?php if($diasRestantes >= 0): ?>
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body" style="text-align:justify;">
@@ -84,6 +110,7 @@
                         </div>
                     </div>
                 </div>
+                <?php endif; ?>
                 <?php endif; ?>
             <?php endif; ?>
             <?php endforeach; ?>

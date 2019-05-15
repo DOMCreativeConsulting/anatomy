@@ -48,6 +48,56 @@ class Servicos
         redirect('servicos');
     }
 
+    public static function expirar($id)
+    {
+        App::get('database')->update('servicos',[
+            'status' => 'cancelado'
+        ],[
+            'id' => $id
+        ]);
+
+        @header("Refresh:0");
+    }
+
+    public static function cadastrarPauta()
+    {
+        $cliente = App::get('database')->selectWhere('usuarios',[
+            "id" => $_POST['cliente']
+        ]);
+
+        $nomeCliente = $cliente[0]->nome;
+
+        mkdir("private/pautas/$nomeCliente"." - ".$_POST['titulo'], 0777, true);
+
+        if($_FILES['arquivos']['size'] != 0){
+            uploadFiles("private/pautas/$nomeCliente"." - ".$_POST['titulo']."/", "arquivos");
+        }
+
+
+        App::get('database')->insert('servicos',[
+            'categoria' => 'pauta redes sociais',
+            'titulo' => $_POST['titulo'],
+            'descricao' => $_POST['texto'],
+            'autor' => $_SESSION['usuario'],
+            'prazo' => $_POST['dia'],
+            'clienteId' => $_POST['cliente'],
+            'destinado' => $nomeCliente,
+            'status' => 'aguardando aprovacao',
+            'produto' => 'Redes Sociais'
+        ]);
+
+        App::get('database')->insert('notificacoes',[
+            'mensagem' => $_SESSION['usuario']." acaba de enviar uma pauta de redes sociais. Você tem 2 dias para aprovar ou reprovar.",
+            'status' => 'nao lida',
+            'destinado' => $_POST['cliente'],
+            'tipo' => 'aviso'
+        ]);
+
+        $_SESSION['sucesso'] = true;
+
+        redirect('cadastrar-pauta');
+    }
+
     public static function aprovar()
     {
         App::get('database')->update('servicos',[
@@ -145,7 +195,73 @@ class Servicos
             <br><a href='http://sistema.anatomymkt.com.br/'>Clique aqui para ser redirecionado ao Painel do Cliente.</a>
         "]);
 
-        redirect('sucesso');
+        $_SESSION['sucesso'] = true;
+
+        redirect('solicitar-servicos');
+
+    }
+
+    public static function simular()
+    {
+
+        $nome = $_POST['cliente'];
+
+        $funcionarioCliente = App::get('database')->selectWhere('usuarios',[
+            'nome' => $nome
+        ]);
+
+        $funcionario = $funcionarioCliente[0]->funcionario;
+        $id = $funcionarioCliente[0]->id;
+        $emailCliente = $funcionarioCliente[0]->email;
+
+        mkdir("private/enviosCliente/$nome"." - ".$_POST['titulo'], 0777, true);
+
+        if($_FILES['arquivos']['size'] != 0){
+            uploadFiles("private/enviosCliente/$nome"." - ".$_POST['titulo']."/", "arquivos");
+        }
+
+        App::get('database')->insert('servicos',[
+            'categoria' => $_POST['categoria'],
+            'titulo' => $_POST['titulo'],
+            'descricao' => $_POST['descricao'],
+            'produto' => $_POST['produto'],
+            'clienteId' => $id,
+            'autor' => $nome,
+            'prazo' => $_POST['prazo'],
+            'destinado' => $funcionario
+        ]);
+
+        App::get('database')->insert('notificacoes',[
+            'mensagem' => $nome." acaba de solicitar um serviço.",
+            'status' => 'nao lida',
+            'destinado' => $funcionario,
+            'tipo' => 'aviso'
+        ]);
+
+        $emailFuncionario = App::get('database')->selectWhere('usuarios',[
+            'nome' => $_SESSION['funcionario']
+        ]);
+
+        foreach($emailFuncionario as $email){
+            $emailFuncionario = $email->email;
+        }
+
+        Email::enviar('noreply@anatomymkt.com.br',$_SESSION['email'],[
+            'assunto' => $nome." acaba de solicitar um serviço.", 
+            'mensagem' => $nome." solicitou um ".$_POST['produto']."<br>Você tem 7 dias para respondê-lo antes que o prazo se expire."
+        ]);
+
+        Email::enviar('noreply@anatomymkt.com.br',$emailCliente,[
+            'assunto' => "Sua solicitação foi realizada com êxito.", 
+            'mensagem' => "Sua solicitação foi realizada com êxito e será respondida dentro do prazo de até 7 dias.
+            <br><img src='http://sistema.anatomymkt.com.br/public/assets/img/anatomy.png' width='200px'>
+            <br><a href='http://sistema.anatomymkt.com.br/'>Clique aqui para ser redirecionado ao Painel do Cliente.</a>
+        "]);
+
+        $_SESSION['sucesso'] = true;
+        
+        redirect('simular-cliente');
+
     }
 
 }

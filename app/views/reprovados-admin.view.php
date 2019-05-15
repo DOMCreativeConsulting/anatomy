@@ -47,6 +47,28 @@
                             <div class="row pT2">
                                 <p class="col-md-12"><b>Descrição: </b><?=$servico->descricao;?></p>
                             </div>
+                            <div class="row pT2">
+                                <p class="col-md-12"><b>Considerações: </b><?=$servico->consideracoes;?></p>
+                            </div>
+                            <div class="row pT2">
+                                <div class="col-xl-4 col-lg-6 col-sm-6 col-xs-6">
+                                    <button type="button" name="servicoId" value="<?=$servico->id;?>" class="form-control toggleEnviarNovo">Enviar novo</button>
+                                </div>
+                                <div class="col-md-12 pT2 enviar-novo">
+                                    <form action="entregar-novo" method="POST" enctype="multipart/form-data">
+                                        <div class="row">
+                                            <input type="hidden" value="<?=$servico->id;?>" name="servico">
+                                            <input type="text" class="form-control" name="nome" placeholder="Novo título">
+                                            <textarea class="form-control" placeholder="mensagem..." name="descricao"></textarea>
+                                            <label for="file-upload" style="background-color:white !important;" class="col-md-6 custom-file-upload">
+                                                Enviar Arquivos
+                                            </label>
+                                            <input type="file" id="file-upload" name="arquivos[]" multiple required>
+                                            <button type="submit" class="col-md-6 form-control">Enviar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                             <div class="row pT2" style="float:right">
                                 <h6 class="col-md-12"><b>Status: </b><?=$servico->status;?></h6>
                             </div>

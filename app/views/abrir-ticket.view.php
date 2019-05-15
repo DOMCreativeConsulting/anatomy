@@ -44,4 +44,5 @@
 
 <div class="clearfix"></div>
 <?php include 'partials/footerPainel.php'; ?>
+<?php checkSuccess(); ?>
 </div>

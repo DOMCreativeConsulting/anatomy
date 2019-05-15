@@ -11,6 +11,7 @@
                         <ul class="sub-menu children dropdown-menu">                            
                             <li><i class="fa fa-clock-o"></i><a href="solicitar-servicos">Solicitar</a></li>
                             <li><i class="fa fa-check"></i><a href="meus-servicos">Minhas Solicitações</a></li>
+                            <li><i class="fa fa-facebook"></i><a href="minhas-pautas">Minhas Pautas</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
@@ -24,10 +25,6 @@
                     <li>
                         <a href="minha-conta"> <i class="menu-icon fa fa-user"></i>Minha Conta </a>
                     </li>
-                    <li>
-                        <a href="#"> <i class="menu-icon fa fa-bell"></i>Notificações </a>
-                    </li>
-                    
                 </ul>
             </div>
         </nav>

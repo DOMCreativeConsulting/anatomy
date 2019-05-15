@@ -11,6 +11,13 @@ class NotificacoesController
         Notificacoes::buscar();
     }
 
+    public function todas()
+    {
+        $notificacoes = Notificacoes::buscar();
+
+        return view('notificacoes',compact('notificacoes'));
+    }
+
     public function marcarLida()
     {
         Notificacoes::marcarLida();

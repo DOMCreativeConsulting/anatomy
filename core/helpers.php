@@ -81,3 +81,26 @@ function delTree($dir) {
     
     return rmdir($dir); 
 }
+
+function checkSuccess()
+{
+
+    if(isset($_SESSION['sucesso']) && $_SESSION['sucesso'] == true){
+        ?><script>alert("Sucesso!");</script><?php
+    }
+
+    $_SESSION['sucesso'] = false;
+
+}
+
+function diasRestantes($prazo)
+{
+    $data_hoje = date('Y-m-d');
+    $data_prazo = $prazo;
+
+    $diferenca = strtotime($data_prazo) - strtotime($data_hoje);
+
+    $dias = floor($diferenca / (60 * 60 * 24));
+
+    return $dias;
+}

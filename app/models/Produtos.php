@@ -14,6 +14,9 @@ class Produtos
     public static function entregar()
     {
         $nome = $_POST['nome'];
+
+        $servico = App::get('database')->selectWhere('servicos',["id"=>$_POST['servico']]);
+        $nomeDoCliente = $servico[0]->autor;
         
         mkdir("private/$nome", 0777, true);
 
@@ -36,7 +39,7 @@ class Produtos
         App::get('database')->insert('notificacoes',[
             'mensagem' => $_SESSION['usuario']." acaba de responder a sua solicitação. <br>Você tem 2 dias para aprovar ou reprovar o produto.",
             'status' => 'nao lida',
-            'destinado' => $nome,
+            'destinado' => $nomeDoCliente,
             'tipo' => 'aviso'
         ]);
 
@@ -54,10 +57,14 @@ class Produtos
 
         Email::enviar('noreply@anatomymkt.com.br',$email,[
             'assunto' => $_SESSION['usuario']." acaba de entregar a sua solicitação.", 
-            'mensagem' => $_SESSION['usuario']." acaba de entregar o serviço ".$_POST['nome'].". <br>Você tem 2 dias para aprovar ou reprovar o produto antes que o prazo se expire."
+            'mensagem' => $_SESSION['usuario']." acaba de entregar o serviço ".$_POST['nome'].". 
+            <br>Você tem 2 dias para aprovar ou reprovar o produto antes que o prazo se expire.<br>"
         ]);
+        
+        $_SESSION['sucesso'] = true;
 
-        redirect('sucesso');
+        redirect('cadastrar-entrega');
+
     }
 
     public static function entregarNovo()

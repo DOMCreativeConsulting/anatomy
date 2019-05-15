@@ -40,6 +40,11 @@ $router->get("$base/cadastrar-entrega", 'ServicosController@cadastrarEntrega');
 $router->post("$base/cadastrar-entrega", 'ServicosController@cadastrarEntrega');
 $router->post("$base/entregar-novo", 'ServicosController@entregarNovo');
 $router->post("$base/filtrar-cliente", 'ServicosController@filtraCliente');
+$router->get("$base/cadastrar-pauta", 'ServicosController@cadastrarPautaTela');
+$router->post("$base/cadastrarPauta", 'ServicosController@cadastrarPauta');
+$router->get("$base/minhas-pautas", 'ServicosController@minhasPautas');
+$router->get("$base/simular-cliente", 'ServicosController@simularCliente');
+$router->post("$base/simular", 'ServicosController@simular');
 
 $router->post("$base/cancelar", 'ServicosController@cancelar');
 $router->post("$base/aprovar", 'ServicosController@aprovar');
@@ -54,5 +59,6 @@ $router->get("$base/tickets-pendentes", 'TicketsController@pendentes');
 $router->get("$base/tickets-resolvidos", 'TicketsController@resolvidos');
 
 $router->post("$base/marcar-lida", 'NotificacoesController@marcarLida');
+$router->get("$base/notificacoes", 'NotificacoesController@todas');
 
 $router->get("$base/sucesso", 'IndexController@sucesso');

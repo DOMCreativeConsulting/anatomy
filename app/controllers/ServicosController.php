@@ -168,7 +168,42 @@ class ServicosController
     {
         Servicos::cadastrar();
 
-        return view('solicita-servicos');
+        view('solicita-servicos');
+        ?><script>alert("Sucesso!");</script><?php
+    }
+
+    public function cadastrarPautaTela()
+    {
+        User::check();
+        $clientes = User::clientes();
+
+        return view('cadastrar-pauta',compact('clientes'));
+    }
+
+    public function cadastrarPauta()
+    {
+        Servicos::cadastrarPauta();
+    }
+
+    public function minhasPautas()
+    {
+        $servicos = Servicos::buscar();
+
+        return view('minhas-pautas', compact('servicos'));
+    }
+
+    public function simularCliente()
+    {
+        User::check();
+
+        $clientes = User::clientes();
+
+        return view('simular-cliente',compact('clientes'));
+    }
+
+    public function simular()
+    {
+        Servicos::simular();
     }
 
 }

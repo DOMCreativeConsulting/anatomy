@@ -3,7 +3,7 @@
 <div id="right-panel" class="right-panel">
     <?php include 'partials/headerCliente.php'; ?>
     <div class="content">
-    <h1 class="title">SOLICITAÇÕES</h1>
+    <h1 class="title">SUAS PAUTAS DE REDES SOCIAIS</h1>
     <div class="row">
         <div class="col-md-3 offset-md-9">
             <form method="POST">
@@ -28,7 +28,6 @@
             isset($_POST['ordem']) && $_POST['ordem'] == 'todos' ? $max = 9999 : $max = 6; 
             isset($_POST['ordem']) && $_POST['ordem'] == 'recentes' ? $ordem = array_reverse($servicos) : $ordem = $servicos;
             foreach($ordem as $servico):
-                $diasRestantes = diasRestantes($servico->prazo);
                 switch($servico->status)
                 {
                     case 'aprovado':
@@ -47,34 +46,10 @@
                         $rgb = 'background-color:rgba(255,255,255,1);';
                     break;
                 }
-            if($nServicos <= $max && $servico->autor == $_SESSION['usuario']):
+            if($nServicos <= $max):
+                if($servico->categoria == 'pauta redes sociais' && $servico->destinado == $_SESSION['usuario'] || $servico->status == 'pauta redes sociais' && $_SESSION['funcao'] == 'admin'):
                     $nServicos++;
-                    if($diasRestantes < 0): ?>
-
-                    <div class="col-md-6">
-                        <div class="card" style="background-color:rgba(0,0,0,0.4);">
-                            <div class="card-body" style="text-align:justify;">
-                                <div class="row">
-                                    <h3 class="col-md-12 title3"><?=$servico->autor;?></h3>
-                                    <div class="col-md-12 pT2">
-                                        <h5 class="col-md-12"><b>Título: </b><?=$servico->titulo;?></h5>
-                                    </div>
-                                    <div class="col-md-12 pT2">
-                                        <h5 class="col-md-12"><b>Categoria: </b><?=$servico->categoria;?></h5>
-                                    </div>
-                                    <div class="col-md-12 pT2">
-                                        <h5 class="col-md-12"><b>Produto: </b><?=$servico->produto;?></h5>
-                                    </div>
-                                    <div class="col-md-12 pT2">
-                                        <h5 class="col-md-12"><b>Prazo: </b><b style="color:red">Expirado</b></h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
-                <?php endif; ?>
-                <?php if($diasRestantes >= 0): ?>
+            ?>
                 <div class="col-md-6">
                     <div class="card" style="<?=$rgb;?>">
                         <div class="card-body" style="text-align:justify;">
@@ -90,53 +65,25 @@
                             <div class="row pT2">
                                 <p class="col-md-12"><b>Descrição: </b><?=$servico->descricao;?></p>
                             </div>
+                            <div class="row pT2" style="float:right">
+                                <h6 class="col-md-12"><b>Status: </b><?=$servico->status;?></h6>
+                            </div>
                             <div class="row pT2">
                                 <div class="col-md-12">
-                                <?php if($servico->status == 'pendente'): 
-                                    $pasta = $servico->autor." - ".$servico->titulo;
-                                    $dirname = "private/enviosCliente/$pasta/";
+                                    <?php
+                                    $pasta = $servico->destinado." - ".$servico->titulo;
+                                    $dirname = "private/pautas/$pasta/";
                                     $images = glob($dirname."*.*");
                                     
                                     foreach($images as $image) {
                                         echo '<img class="miniaturaCard" src="'.$image.'" />';
                                     }
-                                endif; ?>
+                                    ?>
+                                    <?php @zip("$dirname", "private/pauta "."$servico->destinado"." $servico->titulo".".zip"); ?>
+                                    <p class="col-md-12"><b><a href="private/pauta <?=$servico->destinado?> <?=$servico->titulo;?>.zip" download>Baixar Arquivos.</a></b></p>
                                 </div>
                             </div>
-                            <div class="row pT2">
-                            <?php 
-                            if(
-                            $servico->status != 'aprovado' && 
-                            $servico->status != 'reprovado' && 
-                            $servico->status != 'cancelado' && 
-                            $servico->status != 'aguardando aprovacao'
-                            ): 
-                            ?>
-                                <div class="col-xl-4 col-lg-6 col-sm-6 col-xs-6">
-                                    <form action="cancelar" method="POST">
-                                        <button style="background-color:rgba(255,0,0,0.5);" type="submit" name="servico" value="<?=$servico->id;?>" class="form-control">Cancelar</button>
-                                    </form>
-                                </div>
-                            <?php 
-                            endif;
-                            if($servico->status == 'aguardando aprovacao'): ?>
-                            <input type="hidden" value="<?=$servico->id;?>" id="servicoId">
-                            <button type="button" id="botaoToggle" style="background-color:rgba(0,0,0,0.1);height:40px;" class="btn col-md-6 botaoToggle">Ver Resposta</button>
-                            <div class="pT2 col-md-12 fechar" id="toggle<?=$servico->id;?>">
-                                <div class="col-md-12">
-                                    <?php foreach ($produtos as $produto){
-                                        if($produto->pedidoId == $servico->id){
-                                            $texto = $produto->descricao;
-                                            $titulo = $produto->nome;
-                                        }
-                                    }
-
-                                    @zip("private/$titulo", "private/$titulo.zip");
-
-                                    ?>
-                                    <p><?=$texto;?></p>
-                                    <b><a href="private/<?=$titulo?>.zip" download>Baixar Arquivos.</a></b>
-                                </div>
+                            <?php if($servico->status == 'aguardando aprovacao'): ?>
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6 col-sm-6 col-xs-6 pT4">
                                     <button style="background-color:rgba(255,0,0,0.5);" type="button" class="form-control toggleReprovar">Reprovar</button>
@@ -153,15 +100,11 @@
                                     </form>
                                 </div></div>
                             </div>
-                            <?php endif; ?>
-                                <div class="col-md-12 pT2" style="text-align:right;">
-                                    <h6 class="col-md-12"><b>Status: </b><?=$servico->status;?></h6>
-                                </div>
-                            </div>
+                            <?php endif;?>
                         </div>
                     </div>
                 </div>
-            <?php endif; ?>
+                <?php endif; ?>
             <?php endif; ?>
             <?php endforeach; ?>
         </div>

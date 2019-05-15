@@ -20,11 +20,19 @@ class Notificacoes
         ]);
 
         if($_SESSION['funcao'] == 'cliente'){
-            redirect('meus-tickets');
+            if($_POST['tipo']=='ticket'){
+                redirect('meus-tickets');
+            }else{
+                redirect('servicos');
+            }
         }
         
         if($_SESSION['funcao'] != 'cliente'){
-            redirect('tickets-pendentes');
+            if($_POST['tipo']=='ticket'){
+                redirect('tickets-pendentes');
+            }else{
+                redirect('servicos');
+            }
         }
         
     }

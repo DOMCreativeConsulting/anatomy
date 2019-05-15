@@ -23,6 +23,7 @@ class Ticket
             'tipo' => 'ticket'
         ]);
 
+        $_SESSION['sucesso'] = true;
         redirect('ticket');
     }
 

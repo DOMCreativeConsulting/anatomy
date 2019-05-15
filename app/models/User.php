@@ -103,12 +103,14 @@ class User
 
         if(isset($_POST['funcionario']))
         {
-            return redirect('sucesso');
+            $_SESSION['sucesso'] = true;
+            redirect('cadastrar-cliente');
         }
 
         if(isset($_POST['funcao']))
         {
-            return redirect('sucesso');
+            $_SESSION['sucesso'] = true;
+            redirect('cadastrar-usuario');
         }
 
     }

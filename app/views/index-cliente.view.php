@@ -9,7 +9,9 @@
         <?php
         $nServicos = 0;
         foreach($servicos as $servico){
-            $nServicos++;
+            if($servico->categoria != 'pauta redes sociais'){
+                $nServicos++;
+            }
         }
 
         $nTickets = 0;
