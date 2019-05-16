@@ -1,4 +1,4 @@
-<header id="header" class="header">
+<header id="header" style="height:66px !important" class="header">
     <?php
     use App\Model\Notificacoes; 
 
@@ -20,7 +20,7 @@
 
             <div class="top-left">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="./"><img src="public/assets/img/anatomy.png" height="40px" width="100px" alt="Logo"></a>
+                    <a class="navbar-brand" href="./"><img src="public/assets/img/anatomy.png" width="100px" alt="Logo"></a>
                     <!--<a class="navbar-brand hidden" href="./"><img src="public/theme/images/logo2.png" alt="Logo"></a>-->
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
                 </div>
