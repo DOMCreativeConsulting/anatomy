@@ -127,6 +127,35 @@ class User
         }
     }
 
+    public static function delete()
+    {
+        return App::get('database')->delete('usuarios',["id" => $_POST['id']]);
+    }
+
+    public static function editar()
+    {
+        App::get('database')->update('usuarios',[
+            'nome' => $_POST['nome'],
+            'email' => $_POST['email'],
+            'endereco' => $_POST['endereco'],
+            'cpf' => $_POST['cpf'],
+            'funcionario' => $_POST['funcionario']
+        ],[
+            'id' => $_POST['id']
+        ]);
+    }
+
+    public static function editarFuncionario()
+    {
+        App::get('database')->update('usuarios',[
+            'nome' => $_POST['nome'],
+            'funcao' => $_POST['funcao'],
+            'email' => $_POST['email']
+        ],[
+            'id' => $_POST['id']
+        ]);
+    }
+
     public static function clientes()
     {
         return App::get('database')->selectWhere('usuarios',["funcao" => "cliente"]);

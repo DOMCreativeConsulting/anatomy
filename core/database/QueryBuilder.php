@@ -42,6 +42,19 @@ class QueryBuilder
         }
     }
 
+    public function delete($tabela, $campos)
+    {
+        $where = implode(' = ', $campos);
+        $sql = "DELETE FROM {$tabela} WHERE `id` = {$where}";
+        try {
+            $statement = $this->pdo->prepare($sql)->execute();
+            return $statement;
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+
+        }
+    }
+
     public function update($tabela, $dados, $where)
     {
         $dados = (array)$dados;

@@ -20,4 +20,23 @@ class UserController
         return view('minha-conta');
     }
 
+    public function deletar()
+    {
+        dd($_POST);
+        User::delete();
+        redirect('editar-usuario');
+    }
+
+    public function alterar()
+    {
+        User::editar();
+        redirect('editar-usuario');
+    }
+
+    public function alterarFuncionario()
+    {
+        User::editarFuncionario();
+        redirect('editar-usuario');
+    }
+
 }

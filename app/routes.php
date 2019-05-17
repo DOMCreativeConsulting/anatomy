@@ -30,6 +30,9 @@ $router->get("$base/cadastrar-cliente", 'LoginController@cadastrarCliente');
 $router->get("$base/cadastrar-usuario", 'LoginController@cadastrarUsuario');
 
 $router->get("$base/editar-usuario", 'UserController@index');
+$router->post("$base/alterar-usuario", 'UserController@alterar');
+$router->post("$base/alterar-funcionario", 'UserController@alterarFuncionario');
+$router->post("$base/deletar-usuario", 'UserController@deletar');
 $router->get("$base/minha-conta", 'UserController@minhaConta');
 
 $router->get("$base/solicitar-servicos", 'ServicosController@solicitar');

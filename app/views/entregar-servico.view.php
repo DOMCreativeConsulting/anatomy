@@ -32,7 +32,7 @@
                                     <label for="file-upload" class="custom-file-upload">
                                         Enviar Arquivos
                                     </label>
-                                    <input type="file" id="file-upload" name="arquivos[]" multiple required>
+                                    <input type="file" id="file-upload" name="arquivos[]" multiple>
                                 </div>
                                 <div class="col-md-12" style="text-align:center">
                                     <p style="list-style:none;" id="file-name">
