@@ -38,6 +38,7 @@ $router->get("$base/minha-conta", 'UserController@minhaConta');
 $router->get("$base/solicitar-servicos", 'ServicosController@solicitar');
 $router->post("$base/solicitar", 'ServicosController@cadastrar');
 $router->get("$base/meus-servicos", 'ServicosController@index');
+$router->post("$base/meus-servicos", 'ServicosController@index');
 $router->post("$base/entregar", 'ServicosController@entregar');
 $router->get("$base/cadastrar-entrega", 'ServicosController@cadastrarEntrega');
 $router->post("$base/cadastrar-entrega", 'ServicosController@cadastrarEntrega');

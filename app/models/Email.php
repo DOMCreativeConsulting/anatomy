@@ -11,7 +11,7 @@ class Email
     public static function enviar($remetente, $destinatario, $conteudo)
     {
 
-        $mail = new PHPMailer(true);
+        $mail = new PHPMailer(false);
 
         try {
             //Server settings
@@ -21,11 +21,11 @@ class Email
             // // optional
             // // used only when SMTP requires authentication  
             $mail->SMTPAuth = true;
-            $mail->Host       = 'smtp.sendgrid.net';  // Specify main and backup SMTP servers
-            $mail->Username   = 'AnatomyMKT';                     // SMTP username
-            $mail->Password   = 'anatomymkt2019';                               // SMTP password
-            $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
-            $mail->Port       = 587;                                    // TCP port to connect to
+            $mail->Host       = 'mail.anatomymkt.com.br';  // Specify main and backup SMTP servers
+            $mail->Username   = 'noreply@anatomymkt.com.br';                     // SMTP username
+            $mail->Password   = '123pereira4';                               // SMTP password
+            $mail->SMTPSecure = 'ssl';                                  // Enable TLS encryption, `ssl` also accepted
+            $mail->Port       = 465;                                    // TCP port to connect to
 
             //Recipients
             $mail->setFrom($remetente, 'Sistema Anatomy');

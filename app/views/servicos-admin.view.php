@@ -52,7 +52,7 @@
             if($diasRestantes < 0): ?>
 
                 <div class="col-md-6">
-                    <div class="card" style="background-color:rgba(0,0,0,0.4);">
+                    <div class="card" style="background-color:rgba(0,0,0,0.1);">
                         <div class="card-body" style="text-align:justify;">
                             <div class="row">
                                 <h3 class="col-md-12 title3"><?=$servico->autor;?></h3>

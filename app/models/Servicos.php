@@ -185,12 +185,12 @@ class Servicos
 
         Email::enviar('noreply@anatomymkt.com.br',$emailFuncionario,[
             'assunto' => $_SESSION['usuario']." acaba de solicitar um serviço.", 
-            'mensagem' => $_SESSION['usuario']." solicitou um ".$_POST['produto']."<br>Você tem 7 dias para respondê-lo antes que o prazo se expire."
+            'mensagem' => $_SESSION['usuario']." solicitou um ".$_POST['produto']."<br>Você tem 15 dias para respondê-lo antes que o prazo se expire."
         ]);
 
         Email::enviar('noreply@anatomymkt.com.br',$_SESSION['email'],[
             'assunto' => "Sua solicitação foi realizada com êxito.", 
-            'mensagem' => "Sua solicitação foi realizada com êxito e será respondida dentro do prazo de até 7 dias.
+            'mensagem' => "Sua solicitação foi realizada com êxito e será respondida dentro do prazo de até 15 dias.
             <br><img src='http://sistema.anatomymkt.com.br/public/assets/img/anatomy.png' width='200px'>
             <br><a href='http://sistema.anatomymkt.com.br/'>Clique aqui para ser redirecionado ao Painel do Cliente.</a>
         "]);
@@ -248,12 +248,12 @@ class Servicos
 
         Email::enviar('noreply@anatomymkt.com.br',$_SESSION['email'],[
             'assunto' => $nome." acaba de solicitar um serviço.", 
-            'mensagem' => $nome." solicitou um ".$_POST['produto']."<br>Você tem 7 dias para respondê-lo antes que o prazo se expire."
+            'mensagem' => $nome." solicitou um ".$_POST['produto']."<br>Você tem 15 dias para respondê-lo antes que o prazo se expire."
         ]);
 
         Email::enviar('noreply@anatomymkt.com.br',$emailCliente,[
             'assunto' => "Sua solicitação foi realizada com êxito.", 
-            'mensagem' => "Sua solicitação foi realizada com êxito e será respondida dentro do prazo de até 7 dias.
+            'mensagem' => "Sua solicitação foi realizada com êxito e será respondida dentro do prazo de até 15 dias.
             <br><img src='http://sistema.anatomymkt.com.br/public/assets/img/anatomy.png' width='200px'>
             <br><a href='http://sistema.anatomymkt.com.br/'>Clique aqui para ser redirecionado ao Painel do Cliente.</a>
         "]);

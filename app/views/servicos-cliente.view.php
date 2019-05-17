@@ -6,7 +6,7 @@
     <h1 class="title">SOLICITAÇÕES</h1>
     <div class="row">
         <div class="col-md-3 offset-md-9">
-            <form method="POST">
+            <form method="POST" action="meus-servicos">
                 <div class="row">
                     <div class="col-xl-7 col-xs-6">
                         <select name="ordem" class="form-control">
@@ -52,7 +52,7 @@
                     if($diasRestantes < 0): ?>
 
                     <div class="col-md-6">
-                        <div class="card" style="background-color:rgba(0,0,0,0.4);">
+                        <div class="card" style="background-color:rgba(0,0,0,0.1);">
                             <div class="card-body" style="text-align:justify;">
                                 <div class="row">
                                     <h3 class="col-md-12 title3"><?=$servico->autor;?></h3>
@@ -88,6 +88,9 @@
                                 <h5 class="col-md-12"><b>Produto: </b><?=$servico->produto;?></h5>
                             </div>
                             <div class="row pT2">
+                                <h5 class="col-md-12"><b>Prazo: </b><?=diasRestantes($servico->prazo); ?> dias restantes.</h5>
+                            </div>
+                            <div class="row pT2">
                                 <p class="col-md-12"><b>Descrição: </b><?=$servico->descricao;?></p>
                             </div>
                             <div class="row pT2">
@@ -114,7 +117,7 @@
                             ?>
                                 <div class="col-xl-4 col-lg-6 col-sm-6 col-xs-6">
                                     <form action="cancelar" method="POST">
-                                        <button style="background-color:rgba(255,0,0,0.5);" type="submit" name="servico" value="<?=$servico->id;?>" class="form-control">Cancelar</button>
+                                        <button style="background-color:rgba(249,249,249,1);" type="submit" name="servico" value="<?=$servico->id;?>" class="form-control">Cancelar</button>
                                     </form>
                                 </div>
                             <?php 
